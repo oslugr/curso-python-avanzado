@@ -385,9 +385,11 @@ La clase MatchObject, de la que ya hemos hablado anteriormente, es la que contie
 Las Expresiones regulares en general, y el módulo re en particular, son herramientas complejas y poderosas. En este capítulo solo se han visto sus principales usos, pero es mucho más lo que se puede aprender sobre las regexps.
 
 
+
 Hoja de referencia rápida de Expresiones regulares:
 
 Para descargar e imprimir, una herramienta tremendamente útil, al menos mientras te acostumbras a usar las regexps
+
 
 
 Documentación del módulo re:
@@ -401,11 +403,16 @@ Expresiones regulares en Wikipedia :
 Pequeño apunte que, si has leído este tema detenidamente, no te aportará prácticamente nada nuevo. Pero no está mal como segunda opinión.
 
 
-regular-expressions.info:
 
-LA referencia online definitiva. Todo lo que necesitas (o no) saber sobre expresiones regulares.
+http://www.regular-expressions.info/:
+
+La referencia online definitiva. Todo lo que necesitas (o no) saber sobre expresiones regulares.
 
 
-Libro "Mastering Regular Expressions, 3rd Edition" , de O'Reilly:
 
-Sí. Todo un libro enterito (y va por la tercera edición) para hablar de las Expresiones regulares. También hay una versión "pocket" para usar de cómoda referencia rápida.
+Libro "Mastering Regular Expressions", Jeffrey E. F. Friedl, 3rd Edition , de O'Reilly. 520 pags.
+
+También hay una versión "pocket" para usar de cómoda referencia rápida.
+
+
+Libro "Programming Python", Mark Lutz. 4th Edition, de O'Reilly. 1584 pags.
