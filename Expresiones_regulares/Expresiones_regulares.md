@@ -13,6 +13,7 @@ Naturalmente, Python también tiene su propia aproximación a las expresiones re
 Antes de empezar a hablar de ello, veamos un pequeño ejemplo que nos servirá para, cambiando sus datos, ir probando los ejemplos que veamos a lo largo de este tema:
 
 
+```
 #!/usr/bin/python
 
 # -*-coding: utf-8 -*-
@@ -31,6 +32,7 @@ else:
 
 print "No aparece"
 
+```
 
 En este simple ejemplo estamos usando el método search para buscar un patrón (mancha) en una cadena (En un lugar de la mancha de cuyo nombre no quiero acordarme). No es muy sofisticado, y simplemente nos dice si aparece o no, pero nos servirá para ir empezando. Puedes (y deberías) probar a cambiar el patrón y/o la cadena para ver qué resultado te da.
 
@@ -56,6 +58,7 @@ Fíjate que no es necesario que sean caracteres alfanuméricos (admite también 
 Para poder poner en tu expresión regular un punto y que signifique sólo un punto y no otra cosa, hay que "escapar" el carácter anteponiéndole la barra "\". De este modo, la expresión "Pe\.a" sólo coincidiría con "Pe.a".
 
 
+```
 #!/usr/bin/python
 
 # -*- coding: utf-8 -*-
@@ -74,6 +77,7 @@ else:
 
 print "No aparece"
 
+```
 
 
 ¿Y si lo que buscamos es la propia cadena "Pe\.a"? ¿Qué patrón debemos usar?
@@ -99,6 +103,7 @@ Para hacer esto en nuestro ejemplo, cambiaríamos la llamada a search de este mo
 De este modo, ya podemos hacer cosas como esta:
 
 
+```
 #!/usr/bin/python
 
 # -*- coding: utf-8 -*-
@@ -117,6 +122,7 @@ else:
 
 print "No aparece"
 
+```
 
 
 Y, ya que estamos en ello, para que los caracteres unicode no nos den problemas en caso de que los estemos usando, es necesario usar el flag re.UNICODE.
@@ -248,6 +254,7 @@ split divide Cadena usando Patrón como referencia y retorna un array conteniend
 Veamoslo con este ejemplo que divide la cadena que se le proporciona en varias subcadenas numéricas usando cono separadores los caracteres no numéricos:
 
 
+```
 #!/usr/bin/python
 
 # -*- coding: utf-8 -*-
@@ -258,6 +265,7 @@ Resultados= re.split("\D", "123a45x6-78.90")
 
 print Resultados
 
+```
 
 Naturalmente, lo complejo del patrón sólo está limitado por tu imaginación y necesidades.
 
@@ -272,6 +280,7 @@ Las coincidencias se retornan en el orden en el que aparecen, y no se superponen
 Veamos un ejemplo simple:
 
 
+```
 #!/usr/bin/python
 
 # -*- coding: utf-8 -*-
@@ -282,6 +291,7 @@ Coincidencias= re.findall(".n", "En un lugar de la Mancha")
 
 print Coincidencias
 
+```
 
 Hasta ahora sólo hemos usado las regexps para encontrar coincidencias, pero otra potente utilidad es la de reemplazar cadenas o partes de estas. Una utilidad para ello es sub:
 
@@ -292,6 +302,7 @@ Esto es algo más complicado, pero fácil de entender. Usamos Patrón para busca
 Por ejemplo:
 
 
+```
 #!/usr/bin/python
 
 # -*- coding: utf-8 -*-
@@ -306,6 +317,7 @@ print Cadena
 
 print Resultados
 
+```
 
 Igual que antes, las posibilidades de complejidad y sofisticación son ilimitadas
 
