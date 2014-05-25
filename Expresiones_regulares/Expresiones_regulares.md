@@ -199,6 +199,23 @@ Y para identificar hora y minutos, en formato "21:34":
 
 "^[0-2]\d:[0-6]\d$"
 
+##Tabla de patrones y scuencias especiales de re
+
+Patrones
+| Operador   | Interpretación |
+| ---------- | ---------- |
+| .          | Busca cualquier caracter          |
+| ^          | Busca al principio de la cadena   |
+
+Secuencias especiales
+| Secuencia  | Interpretación |
+| ---------- | ---------- |
+| \numero    | Busca texto o grupo de numero   |
+| \A         | Busca solo al principio         |
+
+
+ 
+
 ##Identificar fecha
 
 Construye un patrón que coincida con una fecha con la siguiente estructura:
