@@ -201,21 +201,20 @@ Y para identificar hora y minutos, en formato "21:34":
 
 ##Tabla de patrones y scuencias especiales de re
 
-Patrones
-| Operador   | Interpretación |
-| ---------- | ---------- |
-| .          | Busca cualquier caracter          |
-| ^          | Busca al principio de la cadena   |
+Patrones  
+| Operador   | Interpretación |  
+| ---------- | ---------- |  
+| .          | Busca cualquier caracter          |  
+| ^          | Busca al principio de la cadena   |  
 
-Secuencias especiales
-| Secuencia  | Interpretación |
-| ---------- | ---------- |
-| \numero    | Busca texto o grupo de numero   |
-| \A         | Busca solo al principio         |
+Secuencias especiales  
+| Secuencia  | Interpretación |  
+| ---------- | ---------- |  
+| \numero    | Busca texto o grupo de numero   |  
+| \A         | Busca solo al principio         |  
 
-
+  
  
-
 ##Identificar fecha
 
 Construye un patrón que coincida con una fecha con la siguiente estructura:
