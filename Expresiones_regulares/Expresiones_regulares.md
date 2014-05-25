@@ -201,13 +201,15 @@ Y para identificar hora y minutos, en formato "21:34":
 
 ##Tabla de patrones y scuencias especiales de re
 
-Patrones  
+Patrones
+  
 | Operador   | Interpretación |  
 | ---------- | ---------- |  
 | .          | Busca cualquier caracter          |  
 | ^          | Busca al principio de la cadena   |  
 
-Secuencias especiales  
+Secuencias especiales
+  
 | Secuencia  | Interpretación |  
 | ---------- | ---------- |  
 | \numero    | Busca texto o grupo de numero   |  
