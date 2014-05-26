@@ -10,20 +10,20 @@ Se le conoce como el toolkit de GIMP porque originalmente se escribió para desa
 
 GTK es fundamentalmente un interfaz orientada a objetos para programadores de aplicaciones (API). Aunque está escrita completamente en C, está implementada usando la idea de clases y funciones de retrollamada (punteros a función).
 
-En el repositorio alojado en [Github](http://github.com/oslugr/curso-python-avanzado/tree/master/Interfaces_gr%C3%A1ficas_con_PyGTK) tenéis los código de este módulo del curso.
+En el repositorio alojado en [Github](http://github.com/oslugr/curso-python-avanzado/tree/master/Interfaces_gr%C3%A1ficas_con_PyGTK) tenéis los códigos de ejemplo de este módulo del curso.
 
 ##Instalación
 
 ### Requisitos
 Para la creación de un entorno de desarrollo decente en GNOME es necesario trabajar sobre una máquina con una distribución reciente. De esta manera evitaremos luchar con viejos problemas y dependencias. Para las siguientes instrucciones, se supone que se ha instalado Ubuntu 11.10 (o superior) en el equipo. Es muy aconsejable disponer de la versión 3.2 de GNOME, de esta manera también evitaremos problemas con dependencias.
 
-### Herramientas de desarrollo
+###Herramientas de desarrollo
 Mediante la línea de órdenes (o el Centro de Software de Ubuntu) instalaremos los paquetes necesarios para crear nuestras aplicaciones. Básicamente necesitaremos 3 herramientas:
 - Tu IDE preferido o un simple editor de texto nos será mas que suficiente.
 - [Glade](http://glade.gnome.org/ "Glade"), necesario para hacer el diseño de la interfaz. Versión recomendada 3.10
 - [DevHelp](http://live.gnome.org/devhelp), documentación.
 
-### Paquetes necesarios para Python
+###Paquetes necesarios para Python
 Python utiliza [GobjectIntrospection](http://live.gnome.org/GObjectIntrospection), por lo tanto simplemente tenemos de asegurarnos de tener un buen entorno de desarrollo para Python. Imprescindibles los paquetes python y python-object. Desde el intérprete de órdenes se instalarán fácilmente con apt-get.
 
 Para curarnos en salud y evitar errores por dependencias, instalaremos también el paquete gobject-introspection.
@@ -238,24 +238,28 @@ Gtk.main()
 
 
 ##GLADE
-Glade es un RAD (Desarrollo Rápido de Aplicaciones) para el diseño de aplicaciones con GTK +. Glade es una aplicación GTK + sí mismo. Es simplemente una pieza de software que los desarrolladores pueden utilizar para simplificar el proceso de diseño de la interfaz de una aplicación.
+###Que es
+Glade es un RAD (Desarrollo Rápido de Aplicaciones) para el diseño de aplicaciones con GTK+. Debemos decir que Glade es una aplicación GTK+ sí. Así como que es simplemente una pieza de software que los desarrolladores pueden utilizar para simplificar el proceso de diseño de la interfaz de una aplicación.
 
-Esta aplicación nos genera el “fichero.glade”. En realidad es un archivo XML que describe tanto la herencia como las propiedades de los widgets que componen la interfaz.
+Esta aplicación nos genera el ```fichero.glade```. En realidad es un archivo XML que describe tanto la herencia como las propiedades de los widgets que componen la interfaz.
 
-Presentación de la interfaz
+###Presentación de la interfaz
+Veamos como esta estructurada la interfaz de Glade.
 
-Veamos como esta estructurada la interfaz de Glade. En el lado izquierdo se encuentra la "Paleta". La paleta es semejante a la de una aplicación de edición gráfica. Se trata de una paleta de GtkWidgets que utilizaremos para diseñar nuestra aplicación.
+1. La Paleta.
+En el lado izquierdo se encuentra. La paleta es semejante a la de una aplicación de edición gráfica. Se trata de una paleta de GtkWidgets que utilizaremos para diseñar nuestra aplicación.
 
-En la zona media (que está vacía cuando se inicia por primera vez Glade) esta el "Editor". Aquí es donde se puede ver el diseño en curso. En el lado derecho observamos el "Inspector" en la parte superior y el widget de "Propiedades" por debajo de este.
+2. El Editor.
+En la zona media (que está vacía cuando se inicia por primera vez Glade). Aquí es donde se puede ver el diseño en curso. En el lado derecho observamos el "Inspector" en la parte superior y el widget de "Propiedades" por debajo de este.
 
-El Inspector muestra el diseño como un árbol que le permite acceder y ver la jerarquía de los widgets que componen el diseño. Podemos establecer las propiedades de widgets en las fichas de propiedades, incluyendo la especificación de las funciones de devolución de llamada para las señales.
+3. El Inspector.
+Muestra el diseño como un árbol que le permite acceder y ver la jerarquía de los widgets que componen el diseño. Podemos establecer las propiedades de widgets en las fichas de propiedades, incluyendo la especificación de las funciones de devolución de llamada para las señales.
 <IMAGEN>
-Estableciendo funciones a las señales en la ventana de propiedades
 
-
+###Estableciendo funciones a las señales en la ventana de propiedades
 Los objetos emiten una "señal" cuando sucede algo que podría ser útil para el programador. Estas señales son similares a los "eventos" de Visual Basic. Como programador, debemos elegir las señales que deseamos capturar y llevar a cabo una tarea, además de conectar una función de devolución de llamada a esa señal.
 
-La primera señal que vamos a aprender, y que vamos a utilizar en casi todas las aplicaciones GTK + que diseñemos, es la señal "destroy" emitida por el widget GtkObject. Esta señal se emite cuando un GtkObject se destruye. Esto es importante, porque cuando el usuario cierra la ventana a través de 'x' que aparece arriba, en la barra de título o cualquier otro medio, por ejemplo, una entrada de menú, el widget se destruye.
+La primera señal que vamos a aprender, y que vamos a utilizar en casi todas las aplicaciones GTK+ que diseñemos, es la señal "destroy" emitida por el widget GtkObject. Esta señal se emite cuando un GtkObject se destruye. Esto es importante, porque cuando el usuario cierra la ventana a través de 'x' que aparece arriba, en la barra de título o cualquier otro medio, por ejemplo, una entrada de menú, el widget se destruye.
 
 Para capturar esta señal y salir de nuestra aplicación correctamente es necesario indicar la función que vamos a usar para atender a la señal. Se ilustra mejor cuando se escribe código para una GUI, sin embargo, por ahora, vamos a especificar la función que se va a llamar cuando la señal "destroy" se emite por nuestra GtkWindow.
 
@@ -268,18 +272,17 @@ El objeto Gtk.Builder nos permite diseñar una interfaz de usuario con una simpl
 
 Aquí entra en juego Glade. Una vez diseñada la interfaz se creara el fichero con la descripción. El siguiente ejemplo muestra la estructura que crea Glade:
 
-
 https://gist.github.com/2365831
 
 Veamos que métodos de la clase no permiten crear sobre la marcha nuestra interfaz:
 
+```
 builder = Gtk.builder()
 builder. add_from_file(“interfaz.glade”)
 builder.add_objects_from_file(“interfaz.glade”, (“ventana1”,”boton1”, “boton2”))
-
+```
 
 Cuando ya hemos diseñado nuestra interfaz con glade y la hemos cargado con Gtk.builder es el momento de trabajar individualmente sobre cada widget/objeto.
-
 
 Para poder visualizar nuestra ventana necesitamos acceder al nuestro objeto “ventana1” y llamar su método show_all:
 
@@ -288,8 +291,9 @@ ventana.show_all()
 
 En caso de necesitarlo también disponemos de un método de Gtk.builder que nos permite recuperar una lista de todos los objetos disponibles:
 
+```
 builder.get_objects()
-
+```
 
 Lo único que nos hace falta es conectar las señales que genera el usuario con los bloques de código correspondientes. En este caso el método es:
 
@@ -297,10 +301,11 @@ builder.connet_signals(handlers)
 
 La variable handlers es un diccionario, donde la clave es el identificador de la señal, y el valor es nombre de la función que será llamada cuando se reciba la señal.
 
+```
 handlers = { “onDeleteWindow” : Gtk.main_quit,
-“onButtonPressed”: clickado,
+    “onButtonPressed”: clickado,
 }
-
+```
 
 Para hacer un tratamiento de señales más elegante definimos un clase Handler, cuyos métodos son llamados por las señales que genera el usuario.
 
@@ -324,7 +329,7 @@ Y en este enlace podéis descargar el fichero Glade correspondiente a la interfa
 
 https://gist.github.com/2407196#file_ventanas.glade
 
-##MENU Y SEÑALES
+##Menu y señales
 Vamos a ver mediante una aplicación básica un ejemplo de como crear una barra de menú y asignarle bloques de código a las señales que generan las entradas de menú. 
 <VIDEO>
 
@@ -332,7 +337,6 @@ Vamos a ver mediante una aplicación básica un ejemplo de como crear una barra 
 Para acabar este módulo vamos a trabajar sobre una aplicación en la que aparecen múltiples etiquetas, cajas de texto y combobox.
 <IMAGEN>
 Para completar este diseño tenemos que usar nuevos objetos que nos ayudan a distribuir colocar y alinear a los widgets que tienen dentro. A estos objetos les llamamos contenedores.
-
 
 En esta aplicación se ha utilizado el objeto GtkBox para ubicar los widgets que componen la interfaz. La primera caja (GtkBox) tiene 3 filas, que corresponden a:
 
@@ -344,7 +348,6 @@ La caja principal la dividimos horizontalmente en dos filas, la fila superior co
 
 Justo debajo de los datos técnico tenemos los objetos etiquetas y cajas de texto. Para alinearlos correctamente ya que son múltiples, nos decantaremos por un objeto GtkGrid en sustitución del GtkBox. Con el objeto GtkGrid le indicaremos el número de filas y columnas que necesitamos. En cada una de sus celdas colocaremos los widgets GtkLabel y GtkEntry.
 
-
 La primera funcionalidad de la aplicación consiste en recuperar de una base de datos los datos que corresponden a cada circuito. El usuario seleccionará del menú circuitos una entrada cualquiera (menuitem) que genera una señal que llamará a la función “onCircuitActivate”
 
 “onCircuitActivate” realiza varias acciones:
@@ -355,11 +358,9 @@ La primera funcionalidad de la aplicación consiste en recuperar de una base de 
 - Se ponen a cero las cajas que aparecen en la última fila de la zona de reglajes
 - Activar el botón Calcular.
 
-
 Puedes ver el código de esta función en:
 
 https://gist.github.com/2409839
-
 
 El diseño y el código de esta aplicación esta disponible en el siguiente repositorio. Como practica se recomienda dedicarle un tiempo a ver cada bloque de código para ver la dinámica de funcionamiento entre interfaz, objetos y señales.
 
