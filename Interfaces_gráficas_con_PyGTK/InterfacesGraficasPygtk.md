@@ -99,7 +99,7 @@ Para probar nuestro primer programa, abrimos la terminal, nos posicionamos en el
 python 01_hola_mundo.py
 ```
 
-![Hola mundo](../img/01_hola_mundo.png)
+![Hola mundo ](../img/InterfacesGtk_01_hola_mundo.png)
 
 ##Bucle principal y señales
 ###Señales
@@ -253,7 +253,7 @@ En la zona media (que está vacía cuando se inicia por primera vez Glade). Aqu�
 
 3. El Inspector.
 Muestra el diseño como un árbol que le permite acceder y ver la jerarquía de los widgets que componen el diseño. Podemos establecer las propiedades de widgets en las fichas de propiedades, incluyendo la especificación de las funciones de devolución de llamada para las señales.
-<IMAGEN>
+![Estructura de Glade ](../img/InterfacesGtk_02_Glade_01.png)
 
 ###Estableciendo funciones a las señales en la ventana de propiedades
 Los objetos emiten una "señal" cuando sucede algo que podría ser útil para el programador. Estas señales son similares a los "eventos" de Visual Basic. Como programador, debemos elegir las señales que deseamos capturar y llevar a cabo una tarea, además de conectar una función de devolución de llamada a esa señal.
@@ -263,7 +263,7 @@ La primera señal que vamos a aprender, y que vamos a utilizar en casi todas las
 Para capturar esta señal y salir de nuestra aplicación correctamente es necesario indicar la función que vamos a usar para atender a la señal. Se ilustra mejor cuando se escribe código para una GUI, sin embargo, por ahora, vamos a especificar la función que se va a llamar cuando la señal "destroy" se emite por nuestra GtkWindow.
 
 En la ventana de propiedades desplegamos las señales GtkWidget. Localizamos la señal “destroy” y en la columna Manipulador, escribimos el nombre de la función que se va a llamar.
-<IMAGEN>
+![Destroy ](../img/InterfacesGtk_02_Glade_02.png)
 
 
 ##GTK-BUILDER
@@ -312,8 +312,45 @@ handlers = { “onDeleteWindow” : Gtk.main_quit,
 
 Para hacer un tratamiento de señales más elegante definimos un clase Handler, cuyos métodos son llamados por las señales que genera el usuario.
 
-Puedes ver el un ejemplo en el siguiente bloque de código:
-https://gist.github.com/2366182
+Puedes ver un ejemplo en el siguiente bloque de código:
+```python
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+from gi.repository import Gtk
+
+class Handler:
+    def __init__(self):
+        self.__valor = True
+
+    def onDeleteWindow(self, *args):
+        Gtk.main_quit(*args)
+
+    def onButtonPressed(self, button):
+        print("Hello World!")
+        
+    def onButtonClick(self, button):
+        if self.__valor:
+            self.__btnLabel = button.get_label()
+            button.set_label("Contenido nuevo")
+            self.__valor = False
+        else:
+            self.__btnLabel = button.get_label()
+            button.set_label("button2")
+            self.__valor = True
+        print self.__btnLabel
+    valor = True
+    btnLabel = ""
+
+builder = Gtk.Builder()
+builder.add_from_file("builder_example.glade")
+builder.connect_signals(Handler())
+
+window = builder.get_object("window1")
+window.show_all()
+
+Gtk.main()
+```
 
 ##VENTANAS
 En este apartado veremos como crear un una ventana con los objetos GtkWindow y GtkAboutdialog.
@@ -321,9 +358,11 @@ En este apartado veremos como crear un una ventana con los objetos GtkWindow y G
 Siguiendo los apartados anteriores, abriremos glade y arrastraremos hasta el editor un objeto GtkWindow y un objeto GtkAboutDialog.
 
 Dentro del objeto GtkWindow vamos a añadir un objeto GtkButton, al que le vamos a asociar la función “onButtonPressed” que mostrará el objeto GtkAboutDialog cuando se emita la señal “clicked”
-<IMAGEN>
+![Ventana principal ](../img/InterfacesGtk_03_ventanas_01.png)
+
 Para cerrar la ventana que aparece al clikar sobre el botón, asignaremos una nueva función a la señal “response” que aparece en el conjunto de señales del objeto GtkAboutDialog.
-<IMAGEN>
+![Ventana Acerca de ](../img/InterfacesGtk_03_ventanas_02.png)
+
 Para que todo funcione solo nos falta escribir el bloque de código asociado a las señales. En el siguiente enlace se puede descargar el fichero:
 
 https://gist.github.com/2407196#file_ventanas.py
@@ -338,14 +377,14 @@ Vamos a ver mediante una aplicación básica un ejemplo de como crear una barra 
 
 ##Botones, etiquetas y cajas de texto
 Para acabar este módulo vamos a trabajar sobre una aplicación en la que aparecen múltiples etiquetas, cajas de texto y combobox.
-<IMAGEN>
+![Botones, etiquetas y cajas de texto ](../img/InterfacesGtk_04_BotonesLabelsCombobox_01.png)
 Para completar este diseño tenemos que usar nuevos objetos que nos ayudan a distribuir colocar y alinear a los widgets que tienen dentro. A estos objetos les llamamos contenedores.
 
 En esta aplicación se ha utilizado el objeto GtkBox para ubicar los widgets que componen la interfaz. La primera caja (GtkBox) tiene 3 filas, que corresponden a:
 
-1ª – Barra de menú - GtkMenubar
-2ª – Caja principal - GtkBox
-3ª – Barra de estado – GtkStatusbar
+1. – Barra de menú - GtkMenubar
+2. – Caja principal - GtkBox
+3. – Barra de estado – GtkStatusbar
 
 La caja principal la dividimos horizontalmente en dos filas, la fila superior contiene a su vez un GtkBox de dos columnas. La columna de la izquierda contiene el widget para imágenes GtkImage. En la columna de la derecha aparecen los datos técnicos del circuito. En la fila inferior aparecen los objetos correspondientes a los reglajes.
 
