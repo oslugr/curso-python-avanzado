@@ -24,14 +24,14 @@ Mediante la línea de órdenes (o el Centro de Software de Ubuntu) instalaremos 
 - [DevHelp](http://live.gnome.org/devhelp), documentación.
 
 ###Paquetes necesarios para Python
-Python utiliza [GobjectIntrospection](http://live.gnome.org/GObjectIntrospection), por lo tanto simplemente tenemos de asegurarnos de tener un buen entorno de desarrollo para Python. Imprescindibles los paquetes python y python-object. Desde el intérprete de órdenes se instalarán fácilmente con apt-get.
+Python utiliza [GobjectIntrospection](http://live.gnome.org/GObjectIntrospection), por lo tanto simplemente tenemos de asegurarnos de tener un buen entorno de desarrollo para Python. Imprescindibles los paquetes python y python-object. Desde el intérprete de órdenes se instalarán fácilmente con apt-get (desde Ubuntu y derivados o con órdenes como yum, pacman etc si usamos otra distribución).
 
 Para curarnos en salud y evitar errores por dependencias, instalaremos también el paquete gobject-introspection.
 
 En definitiva:
-- python
-- python-gobject
-- gobject-introspection
+```bash
+sudo apt-get install python-gobject gobject-introspection
+```
 
 La instalación de librerías y paquetes has configurar nuestro entorno de desarrollo sea lo menos divertido en cuanto a la creación de aplicaciones con PyGTK. Una vez creado nuestro ¡Hola mundo! con PyGTK, el resto será coser y cantar.
 
@@ -41,7 +41,6 @@ Tenemos dos vías principales de acceso al diseño de interfaces con PyGTK. La p
 Más adelante una vez que nos hayamos familiarizado con los widgets que tenemos a nuestro alcance, utilizaremos una aplicación que nos facilitará la creación de nuestra interfaz. Repetimos, esto será mas adelante.
 
 Cómo no podía ser de otra manera, nuestro primer programa será el ¡Hola Mundo!. A continuación os mostraré el código fuente necesario para crear una ventana. Iremos comentando línea a línea para que sea más fácil de entender este ejemplo.
-
 ```python
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
@@ -94,7 +93,6 @@ Veamos los comentarios específicos para cada línea:
 
 
 Para probar nuestro primer programa, abrimos la terminal, nos posicionamos en el directorio que contiene el fichero y lanzamos la orden:
-
 ```bash
 python 01_hola_mundo.py
 ```
@@ -138,7 +136,6 @@ Cada pieza de una interfaz gráfica de usuario GTK+ se compone de uno o varios "
 Aunque un GtkWindow es también un GtkWidget, un GtkWidget no es necesariamente un GtkWindow. Los widgets hijos heredan de sus objetos padre para extender la funcionalidad del objeto. Se trata de programación orientada a objetos.
 
 Podemos mirar en cualquier widget en la documentación de referencia de GTK + para ver qué objetos se derivan de el. En el caso de GtkWindow, se ve algo como esto:
-
 ```
 +-- gobject.GObject
   +-- gtk.Object
@@ -157,7 +154,6 @@ También empezamos a ver que surge una convención de nombres. Esto es bastante 
 Las funciones que manipulan estos objetos se identifican en minúsculas con guiones para espacios. Por ejemplo, gtk_window_set_title() es una función para establecer la propiedad de título de un objeto GtkWindow.
 
 Dejamos un ejemplo simple de uso del widget ProgressBar (una barra de progreso para mostrar el completado de diferentes acciones) haciendo uso de lo ya mencionado en el tema del curso.
-
 ```python
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
@@ -270,11 +266,53 @@ En la ventana de propiedades desplegamos las señales GtkWidget. Localizamos la 
 El objeto Gtk.Builder nos permite diseñar una interfaz de usuario con una simple línea de código. EL funcionamiento de esta clase es muy simple. Se hace una descripción de la interfaz en un fichero XML, en tiempo de ejecución se carga el fichero XML y se crean los objetos automáticamente.
 
 Aquí entra en juego Glade. Una vez diseñada la interfaz se creara el fichero con la descripción. El siguiente ejemplo muestra la estructura que crea Glade:
-
-https://gist.github.com/2365831
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <!-- interface-requires gtk+ 3.0 -->
+  <object class="GtkWindow" id="window1">
+    <property name="can_focus">False</property>
+    <signal name="delete-event" handler="onDeleteWindow" swapped="no"/>
+    <child>
+      <object class="GtkBox" id="box1">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkButton" id="button1">
+            <property name="label" translatable="yes">button1</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="receives_default">True</property>
+            <signal name="pressed" handler="onButtonPressed" swapped="no"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="button2">
+            <property name="label" translatable="yes">button2</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="receives_default">True</property>
+            <signal name="pressed" handler="onButtonClick" swapped="no"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
+```
 
 Veamos que métodos de la clase nos permiten crear sobre la marcha nuestra interfaz:
-
 ```python
 builder = Gtk.builder()
 builder. add_from_file(“interfaz.glade”)
@@ -284,26 +322,22 @@ builder.add_objects_from_file(“interfaz.glade”, (“ventana1”,”boton1”
 Cuando ya hemos diseñado nuestra interfaz con glade y la hemos cargado con Gtk.builder es el momento de trabajar individualmente sobre cada widget/objeto.
 
 Para poder visualizar nuestra ventana necesitamos acceder al nuestro objeto “ventana1” y llamar su método show_all:
-
 ```python
 ventana = builder.get_object(“ventana1”)
 ventana.show_all()
 ```
 
 En caso de necesitarlo también disponemos de un método de Gtk.builder que nos permite recuperar una lista de todos los objetos disponibles:
-
 ```python
 builder.get_objects()
 ```
 
 Lo único que nos hace falta es conectar las señales que genera el usuario con los bloques de código correspondientes. En este caso el método es:
-
 ```python
 builder.connet_signals(handlers)
 ```
 
 La variable handlers es un diccionario, donde la clave es el identificador de la señal, y el valor es nombre de la función que será llamada cuando se reciba la señal.
-
 ```python
 handlers = { “onDeleteWindow” : Gtk.main_quit,
     “onButtonPressed”: clickado,
@@ -382,9 +416,9 @@ Para completar este diseño tenemos que usar nuevos objetos que nos ayudan a dis
 
 En esta aplicación se ha utilizado el objeto GtkBox para ubicar los widgets que componen la interfaz. La primera caja (GtkBox) tiene 3 filas, que corresponden a:
 
-1. – Barra de menú - GtkMenubar
-2. – Caja principal - GtkBox
-3. – Barra de estado – GtkStatusbar
+1. Barra de menú - GtkMenubar
+2. Caja principal - GtkBox
+3. Barra de estado – GtkStatusbar
 
 La caja principal la dividimos horizontalmente en dos filas, la fila superior contiene a su vez un GtkBox de dos columnas. La columna de la izquierda contiene el widget para imágenes GtkImage. En la columna de la derecha aparecen los datos técnicos del circuito. En la fila inferior aparecen los objetos correspondientes a los reglajes.
 
@@ -393,7 +427,6 @@ Justo debajo de los datos técnico tenemos los objetos etiquetas y cajas de text
 La primera funcionalidad de la aplicación consiste en recuperar de una base de datos los datos que corresponden a cada circuito. El usuario seleccionará del menú circuitos una entrada cualquiera (menuitem) que genera una señal que llamará a la función “onCircuitActivate”
 
 “onCircuitActivate” realiza varias acciones:
-
 - Establece la imagen del circuito.
 - Recupera de la base de datos la información del - circuito
 - Esa información se carga en las cajas de texto
@@ -401,9 +434,64 @@ La primera funcionalidad de la aplicación consiste en recuperar de una base de 
 - Activar el botón Calcular.
 
 Puedes ver el código de esta función en:
-
-https://gist.github.com/2409839
+```python
+def onCircuitActivate(self, menuitem):
+                
+        self.circuito = menuitem.get_label()
+        image = self.builder.get_object("image1")
+        image.set_from_file(self.get_image(self.circuito))
+                
+        entry1 = self.builder.get_object("entry1")
+        entry2 = self.builder.get_object("entry2")
+        entry3 = self.builder.get_object("entry3")
+        entry4 = self.builder.get_object("entry4")
+        entry5 = self.builder.get_object("entry5")
+        entry6 = self.builder.get_object("entry6")
+        entry7 = self.builder.get_object("entry7")
+        entry8 = self.builder.get_object("entry8")
+        entry9 = self.builder.get_object("entry9")
+        entry10 = self.builder.get_object("entry10")
+        
+                
+        datos = self.get_datos(self.circuito)
+        
+        entry1.set_text(datos['d1'])
+        entry2.set_text(datos['d2'])
+        entry3.set_text(datos['d3'])
+        entry4.set_text(datos['d4'])
+        entry5.set_text(datos['d5'])
+        entry6.set_text(datos['d6'])
+        entry7.set_text(datos['d7'])
+        entry8.set_text(datos['d8'])
+        entry9.set_text(datos['d9'])
+        entry10.set_text(datos['d10'])
+        
+        datos ={'d1': str("000"),
+                 'd2': str("000"),
+                 'd3': str("000"),
+                 'd4': str("000"),
+                 'd5': str("000"),
+                 'd6': str("000"),
+                 'd7': str("000"),
+                 'd8': str("000"),
+                 'd9': str("000"),}
+        
+        self.populate_entry_optimo(datos)
+        
+        button1 = self.builder.get_object("button1")
+        button1.set_sensitive(True)
+        
+        return True
+```
 
 El diseño y el código de esta aplicación esta disponible en el siguiente repositorio. Como practica se recomienda dedicarle un tiempo a ver cada bloque de código para ver la dinámica de funcionamiento entre interfaz, objetos y señales.
+[ReglajesF1](https://github.com/oslugr/curso-python-avanzado/blob/master/Interfaces_gráficas_con_PyGTK/code/05_ReglajesF1)
 
-https://github.com/franlu/ReglajesF1
+###Notas
+Es posible que al lanzar las aplicaciones os de un error como:
+```bash
+WARNING **: Couldn't register with accessibility bus: Did not receive a reply. Possible causes include: the remote application did not send a reply, the message bus security policy blocked the reply, the reply timeout expired, or the network connection was broken.
+```
+
+Por mala suerte es un [bug](https://bugs.launchpad.net/ubuntu/+source/apport/+bug/1222356) que aún no está resuelto.
+
