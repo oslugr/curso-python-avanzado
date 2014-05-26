@@ -42,7 +42,7 @@ Más adelante una vez que nos hayamos familiarizado con los widgets que tenemos 
 
 Cómo no podía ser de otra manera, nuestro primer programa será el ¡Hola Mundo!. A continuación os mostraré el código fuente necesario para crear una ventana. Iremos comentando línea a línea para que sea más fácil de entender este ejemplo.
 
-```
+```python
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from gi.repository import Gtk
@@ -95,7 +95,7 @@ Veamos los comentarios específicos para cada línea:
 
 Para probar nuestro primer programa, abrimos la terminal, nos posicionamos en el directorio que contiene el fichero y lanzamos la orden:
 
-```
+```bash
 python 01_hola_mundo.py
 ```
 
@@ -158,7 +158,7 @@ Las funciones que manipulan estos objetos se identifican en minúsculas con guio
 
 Dejamos un ejemplo simple de uso del widget ProgressBar (una barra de progreso para mostrar el completado de diferentes acciones) haciendo uso de lo ya mencionado en el tema del curso.
 
-```
+```python
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
@@ -236,7 +236,6 @@ win.show_all()
 Gtk.main()
 ```
 
-
 ##GLADE
 ###Que es
 Glade es un RAD (Desarrollo Rápido de Aplicaciones) para el diseño de aplicaciones con GTK+. Debemos decir que Glade es una aplicación GTK+ sí. Así como que es simplemente una pieza de software que los desarrolladores pueden utilizar para simplificar el proceso de diseño de la interfaz de una aplicación.
@@ -274,9 +273,9 @@ Aquí entra en juego Glade. Una vez diseñada la interfaz se creara el fichero c
 
 https://gist.github.com/2365831
 
-Veamos que métodos de la clase no permiten crear sobre la marcha nuestra interfaz:
+Veamos que métodos de la clase nos permiten crear sobre la marcha nuestra interfaz:
 
-```
+```python
 builder = Gtk.builder()
 builder. add_from_file(“interfaz.glade”)
 builder.add_objects_from_file(“interfaz.glade”, (“ventana1”,”boton1”, “boton2”))
@@ -286,22 +285,26 @@ Cuando ya hemos diseñado nuestra interfaz con glade y la hemos cargado con Gtk.
 
 Para poder visualizar nuestra ventana necesitamos acceder al nuestro objeto “ventana1” y llamar su método show_all:
 
+```python
 ventana = builder.get_object(“ventana1”)
 ventana.show_all()
+```
 
 En caso de necesitarlo también disponemos de un método de Gtk.builder que nos permite recuperar una lista de todos los objetos disponibles:
 
-```
+```python
 builder.get_objects()
 ```
 
 Lo único que nos hace falta es conectar las señales que genera el usuario con los bloques de código correspondientes. En este caso el método es:
 
+```python
 builder.connet_signals(handlers)
+```
 
 La variable handlers es un diccionario, donde la clave es el identificador de la señal, y el valor es nombre de la función que será llamada cuando se reciba la señal.
 
-```
+```python
 handlers = { “onDeleteWindow” : Gtk.main_quit,
     “onButtonPressed”: clickado,
 }
