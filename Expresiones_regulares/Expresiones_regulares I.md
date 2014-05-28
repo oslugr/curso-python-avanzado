@@ -47,7 +47,8 @@ Para entender realmente los ejemplos que vamos a ir viendo deberías comprobarlo
 Los "comodines" son caracteres o grupos de estos que tienen una interpretación especial que sustituye a otros caracteres. Del mismo modo que un comodín de la baraja puede reemplazar a un As de corazones o un siete de picas, estos comodines se pueden interpretar como otros caracteres o grupos de estos.
 
 Veamoslo con el más básico de los comodines:
-Punto "."
+
+**Punto "."**
 
 El punto (.) reemplaza a un carácter cualquiera. De este modo, una búsqueda de la cadena "Pe.a", coincidirá con "Peta", "Pela" "Pesa", "PeÑa", "Pe-a", "Pe.a"...
 
@@ -87,10 +88,12 @@ Para ello, de nuevo, debemos usar el carácter de escape "\", esta vez delante d
 Nota que hay tres barras. La primera es para escapar la segunda, y la tercera es para escapar el punto (si sólo hubiésemos puesto dos, el punto se interpretaría como un comodín, tal como hemos visto arriba).
 
 Sí, en ocasiones pueden acumularse montones de barras de escape.
-Nueva línea "\n".
+
+**Nueva línea "\n".**
 
 Cuando pulsas la tecla "Enter" o "Intro" para pasar a la línea siguiente, eso es un carácter de nueva línea. Como en casi todos los lenguajes y codificaciones, se representa mediante el código "\n".
-"^" y "$", principio y fin de línea.
+
+**"^" y "$", principio y fin de línea.**
 
 Otros dos caracteres especiales muy útiles son "^" y "$", que indican, respectivamente, el principio y el fin de una línea.
 
@@ -126,16 +129,20 @@ print "No aparece"
 
 
 Y, ya que estamos en ello, para que los caracteres unicode no nos den problemas en caso de que los estemos usando, es necesario usar el flag re.UNICODE.
-Dígitos "\d" y "\D"
+
+**Dígitos "\d" y "\D"**
 
 El comodín \d sustituye a cualquier dígito, y "\D" a cualquier cosa que no lo sea (letras, espacios, puntuación...).
-Espacios "\s" y "\S"
+
+**Espacios "\s" y "\S"**
 
 El comodín "\s" identifica a cualquier carácter que implique un espacio. Esto incluye al espacio propiamente dicho, al tabulador, retorno de carro... El comodín "\S" es su opuesto.
-Alfanumérico "\w" y "\W"
+
+**Alfanumérico "\w" y "\W"**
 
 "\w" identifica caracteres alfanuméricos. Estos son las letras (mayúsculas y minúsculas), los números y el guión bajo "_". "\W" identificará los caracteres no alfanuméricos.
-Corchetes “[]”
+
+**Corchetes “[]”**
 
 Por si esto fuera poco, los corchetes "[]" se usan para crear listas de caracteres. Si, por ejemplo, queremos que coincidan los números pares del 2 al 8, pondremos [2468]. De este modo, "a[bc]d" coincidirá tanto con "abd" como con "acd". En los corchetes pueden definirse secuencias separando el primer y el último elementos con un guión (-), como "[0-9]" para los números o "[a-h]" para las letras de la "a" a la "h". Pueden agruparse varas secuencias, de modo que [a-zA-Z] coincidirá con una letra mayúscula o minúscula.Dentro de unos corchetes se puede usar el símbolo "^" para indicar el conjunto opuesto al descrito. Por ejemplo, [^a-z] se referirá a cualquier carácter que no sea una letra minúscula.
 
@@ -143,7 +150,7 @@ Por si esto fuera poco, los corchetes "[]" se usan para crear listas de caracter
 
 Además de los comodines que vimos en el tema anterior, hay otras herramientas que permiten modificar o afinar su utilidad, y que son las que le dan verdadera potencia.
 
-Más “+”
+**Más “+”**
 
 Para empezar, el signo + detrás de un carácter hace que en el patrón coincidan ese carácter repetido una o más veces.
 
@@ -153,7 +160,7 @@ Del mismo modo, si queremos que el patrón coincida con cero, una o más aparici
 
 Y, si sólo buscamos cero o una apariciones, tenemos "?". En este caso, "ab?c" coincidirá con "ac" y "abc", pero no con "abbc".
 
-Llaves “{}”
+**Llaves “{}”**
 
 Si esto no es suficiente y necesitas más precisión, seguimos teniendo opciones.
 
@@ -161,13 +168,13 @@ Si esto no es suficiente y necesitas más precisión, seguimos teniendo opciones
 
 Para tener algo más de margen, tenemos "{m,n}", que nos indica que buscamos un mínimo de m repeticiones y un máximo de n.
 
-Paréntesis “()”
+**Paréntesis “()”**
 
 Hasta ahora, hemos aplicado estos modificadores a caracteres, pero también se pueden usar con cadenas completas encerrando estas entre paréntesis "()".
 
 Por ejemplo, el patrón "ba(na)+" encontrará "bana", "banana", "bananana"...
 
-Barra “|”
+**Barra “|”**
 
 Se puede usar el signo | para separar opciones, de tal modo que "digo (hola|mundo)" coincidirá tanto con la cadena "digo hola" como con "digo mundo".
 
@@ -177,7 +184,7 @@ Naturalmente, todo esto se puede combinar para hacer cosas más complejas e inte
 
 Con lo visto hasta ahora deberías poder justificar ese patrón. Al principio es un poco complicado de leer, pero parémonos a examinarla detenidamente. El DNI consta de un número de ocho dígitos y una letra. La letra, que puede ser mayúscula o minúscula, puede seguir al número directamente o estar separada por un espacio o un guión.Con el símbolo "^" al principio indicamos que queremos que la coincidencia coincida con el principio de la cadena, y con "$" al final hacemos que también coincida con el final. De este modo, buscamos que coincida la cadena completa, no una subcadena dentro de esta.
 
-Algunos ejemplos más:
+*Algunos ejemplos más:*
 
 Número de teléfono: Tres grupos de tres dígitos separados (o no) por guiones:
 
@@ -214,5 +221,13 @@ Secuencias especiales
 | ---------- | ---------- |  
 | \numero    | Busca texto o grupo de numero   |  
 | \A         | Busca solo al principio         |  
+
+##Instalando Regular Expressions Tester
+
+Podemos obtener un complemento de Firefox para probar nuestras expresiones regulares:
+[![Alt text for your video](https://i1.ytimg.com/vi/R1g2SHJGUpc/2.jpg?time=1401275224819)](http://youtu.be/R1g2SHJGUpc)
+
+Veamos un ejemplo para cambiar la etiqueta h1 por h2
+[![Alt text for your video](https://i1.ytimg.com/vi/1H123xAwCw4/2.jpg?time=1401275129775)](http://youtu.be/1H123xAwCw4)
 
 
