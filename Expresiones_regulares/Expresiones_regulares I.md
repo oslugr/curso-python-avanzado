@@ -224,10 +224,14 @@ Secuencias especiales
 
 ##Instalando Regular Expressions Tester
 
-Podemos obtener un complemento de Firefox para probar nuestras expresiones regulares:
+Podemos obtener un complemento de Firefox para probar nuestras expresiones regulares:  
 [![Alt text for your video](https://i1.ytimg.com/vi/R1g2SHJGUpc/2.jpg?time=1401275224819)](http://youtu.be/R1g2SHJGUpc)
 
-Veamos un ejemplo para cambiar la etiqueta h1 por h2
+http://youtu.be/R1g2SHJGUpc
+
+Veamos un ejemplo para cambiar la etiqueta h1 por h2  
 [![Alt text for your video](https://i1.ytimg.com/vi/1H123xAwCw4/2.jpg?time=1401275129775)](http://youtu.be/1H123xAwCw4)
+
+http://youtu.be/1H123xAwCw4
 
 
