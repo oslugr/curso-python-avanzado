@@ -14,13 +14,13 @@ En el repositorio alojado en [Github](http://github.com/oslugr/curso-python-avan
 
 ##Instalación
 
-### Requisitos
+###Requisitos
 Para la creación de un entorno de desarrollo decente en GNOME es necesario trabajar sobre una máquina con una distribución reciente. De esta manera evitaremos luchar con viejos problemas y dependencias. Para las siguientes instrucciones, se supone que se ha instalado Ubuntu 11.10 (o superior) en el equipo. Es muy aconsejable disponer de la versión 3.2 de GNOME, de esta manera también evitaremos problemas con dependencias.
 
 ###Herramientas de desarrollo
 Mediante la línea de órdenes (o el Centro de Software de Ubuntu) instalaremos los paquetes necesarios para crear nuestras aplicaciones. Básicamente necesitaremos 3 herramientas:
-- Tu IDE preferido o un simple editor de texto nos será mas que suficiente.
-- [Glade](http://glade.gnome.org/ "Glade"), necesario para hacer el diseño de la interfaz. Versión recomendada 3.10
+- Tu IDE preferido o un simple editor de texto nos será mas que suficiente. Como buenos editores puedes usar [Geany](www.geany.org/), [Atom](https://atom.io/)
+- [Glade](http://glade.gnome.org/), necesario para hacer el diseño de la interfaz. Versión recomendada 3.10
 - [DevHelp](http://live.gnome.org/devhelp), documentación.
 
 ###Paquetes necesarios para Python
@@ -65,7 +65,6 @@ def main():
 	Gtk.main()
 
 main()
-
 ```
 
 Bien, veamos que ocurre en este ejemplo. A partir de ahora usaremos L + número (o L+[rango]) para indicar el número de línea(s) correspondiente(s) al código del script sobre el que estemos trabajando. La estructura de este ejercicio se base en un clase llamada GUI (Interfaz gráfica de usuario) y una pequeña función “main” donde se creara una instancia de la clase GUI.
@@ -387,27 +386,26 @@ Gtk.main()
 ```
 
 ##VENTANAS
-En este apartado veremos como crear un una ventana con los objetos GtkWindow y GtkAboutdialog.
+En este apartado vamos a ver como crear un una ventana con los objetos GtkWindow y GtkAboutdialog.
 
-Siguiendo los apartados anteriores, abriremos glade y arrastraremos hasta el editor un objeto GtkWindow y un objeto GtkAboutDialog.
+Siguiendo los apartados anteriores, abriremos Glade y arrastraremos hasta el editor (o seleccionamos directamente para añadir) un objeto GtkWindow y un objeto GtkAboutDialog de la paleta de objetos.
 
-Dentro del objeto GtkWindow vamos a añadir un objeto GtkButton, al que le vamos a asociar la función “onButtonPressed” que mostrará el objeto GtkAboutDialog cuando se emita la señal “clicked”
+Dentro de
+
+Dentro del objeto GtkWindow vamos a añadir un objeto GtkButton, al que le vamos a asociar la función ```on_btn_clicked``` que mostrará el objeto GtkAboutDialog cuando se emita la señal “clicked”
 ![Ventana principal ](../img/InterfacesGtk_03_ventanas_01.png)
 
 Para cerrar la ventana que aparece al clikar sobre el botón, asignaremos una nueva función a la señal “response” que aparece en el conjunto de señales del objeto GtkAboutDialog.
 ![Ventana Acerca de ](../img/InterfacesGtk_03_ventanas_02.png)
 
-Para que todo funcione solo nos falta escribir el bloque de código asociado a las señales. En el siguiente enlace se puede descargar el fichero:
+Para que todo funcione solo nos falta escribir el bloque de código asociado a las señales. El código de este ejemplo está en:
 
-https://gist.github.com/2407196#file_ventanas.py
-
-Y en este enlace podéis descargar el fichero Glade correspondiente a la interfaz del ejemplo:
-
-https://gist.github.com/2407196#file_ventanas.glade
+[Github - Interfaces Gráficas PyGTK - Ventanas ](http://github.com/oslugr/curso-python-avanzado/tree/master/Interfaces_gr%C3%A1ficas_con_PyGTK/code/04_Ventanas)
 
 ##Menu y señales
 Vamos a ver mediante una aplicación básica un ejemplo de como crear una barra de menú y asignarle bloques de código a las señales que generan las entradas de menú. 
 <VIDEO>
+
 
 ##Botones, etiquetas y cajas de texto
 Para acabar este módulo vamos a trabajar sobre una aplicación en la que aparecen múltiples etiquetas, cajas de texto y combobox.
@@ -426,7 +424,7 @@ Justo debajo de los datos técnico tenemos los objetos etiquetas y cajas de text
 
 La primera funcionalidad de la aplicación consiste en recuperar de una base de datos los datos que corresponden a cada circuito. El usuario seleccionará del menú circuitos una entrada cualquiera (menuitem) que genera una señal que llamará a la función “onCircuitActivate”
 
-“onCircuitActivate” realiza varias acciones:
+```onCircuitActivate``` realiza varias acciones:
 - Establece la imagen del circuito.
 - Recupera de la base de datos la información del - circuito
 - Esa información se carga en las cajas de texto
@@ -485,9 +483,9 @@ def onCircuitActivate(self, menuitem):
 ```
 
 El diseño y el código de esta aplicación esta disponible en el siguiente repositorio. Como practica se recomienda dedicarle un tiempo a ver cada bloque de código para ver la dinámica de funcionamiento entre interfaz, objetos y señales.
-[ReglajesF1](https://github.com/oslugr/curso-python-avanzado/blob/master/Interfaces_gráficas_con_PyGTK/code/05_ReglajesF1)
+[ReglajesF1](https://github.com/oslugr/curso-python-avanzado/blob/master/Interfaces_gráficas_con_PyGTK/code/05_Reglajes)
 
-###Notas
+##Notas
 Es posible que al lanzar las aplicaciones os de un error como:
 ```bash
 WARNING **: Couldn't register with accessibility bus: Did not receive a reply. Possible causes include: the remote application did not send a reply, the message bus security policy blocked the reply, the reply timeout expired, or the network connection was broken.
