@@ -123,21 +123,21 @@ Aún no soporta la versión 3.0 de Python así que es recomendable que tengáis 
 ###Librerías para scraping
 -Beautiful Soup
 Una librería que existe desde el año 2004 que ha ayudado a muchos desarrolladores. Características de esta librería:
-**Métodos simples con una estructura "Pythónica" para navegar, buscar y modificar el árbol de análisis.
-**Automáticamente convierte el documento de entrada a Unicode y el documento de salida a UTF-8.
+	*Métodos simples con una estructura "Pythónica" para navegar, buscar y modificar el árbol de análisis.
+	*Automáticamente convierte el documento de entrada a Unicode y el documento de salida a UTF-8.
 
 -lxml
 lxml es la caja de herramientas que une las librerías libxml2 para análisis de documentos XML y libxslt (basada en la anterior) es la libería que en sí misma es lenguaje XML para hacer transformaciones en documentos XML.Características de esta librería:
-**Soporte de forma estándar para XML.
-**Soporte para HTML.
-**Mantenido por expertos de XML.
-**Dispone de una API basada en "ElementTree".
+	*Soporte de forma estándar para XML.
+	*Soporte para HTML.
+	*Mantenido por expertos de XML.
+	*Dispone de una API basada en "ElementTree".
 
 -XPath Selectors
 Es otra librería, que es la que usa Scrapy de forma predeterminada e integrada, con una sintaxis clara. Trabaja sobre documentos XML aunque también puede tratar documentos HTML lo que la hace muy versátil.
 Características de esta librería:
-**Basada en libxml2.
-**Dispone de una API para XML y HTML.
+	*Basada en libxml2.
+	*Dispone de una API para XML y HTML.
 
 
 ##Scrapy
@@ -145,14 +145,14 @@ Este es el framework que vamos a utilizar, comencemos con el punto 5.4.1 y conti
 
 ###Requisitos
 Se recomienda lo siguiente:
-*Usar una versión de Python 2.5, 2.6 o 2.7 (ya que la versión para Python 3.0 aún no está soportada).
-*Twisted 8.0 (si estás en windows se recomienda instalar Zope.interface y pywin32).
-*w3lib.
-*lxml o libxml2 (si usas libxml2 se recomienda la versión 2.6.28).
-*simplejson, si usas una versión 2.6 o superior de Python no es necesario.
-*pyopenssl (para conexiones https seguras y se recomienda instalarlo).
-*El intérprete de Python: IPython.
-*Una conexión a internet estable para cuando lo usemos.
+-Usar una versión de Python 2.5, 2.6 o 2.7 (ya que la versión para Python 3.0 aún no está soportada).
+-Twisted 8.0 (si estás en windows se recomienda instalar Zope.interface y pywin32).
+-w3lib.
+-lxml o libxml2 (si usas libxml2 se recomienda la versión 2.6.28).
+-simplejson, si usas una versión 2.6 o superior de Python no es necesario.
+-pyopenssl (para conexiones https seguras y se recomienda instalarlo).
+-El intérprete de Python: IPython.
+-Una conexión a internet estable para cuando lo usemos.
 
 ###Instalación de Scrapy (versión 0.14)
 La instalación del framework es muy simple y la podemos hacer por dos vías:
@@ -306,9 +306,9 @@ Los spiders son clases que definen la forma de navegar por un determinado sitio 
 El ciclo que sigue un spider es el siguiente:
 -Primero empezamos generando la petición inicial (Requests) para navegar por la primera URL y especificamos la función de "vuelta atrás" a ser llamada con la respuesta (Response) descargada de esa petición. La primera petición a hacer es obtenida llamando al método start_request() que por defecto genera la petición para la URL especifica en las direcciones de partida "start_urls" y la función de "vuelta atrás" para las peticiones.
 -En la función de "vuelta atrás" analizamos la respuesta y se puede devolver:
-**Objetos tipo Item.
-**Objetos tipo Request.
-**O una unión de ambos sobre la que se puede iterar.
+	*Objetos tipo Item.
+	*Objetos tipo Request.
+	*O una unión de ambos sobre la que se puede iterar.
 
 -Así estas peticiones serán realizadas descargándose por Scrapy y sus respuestas manipuladas por las funciones de "vuelta atrás". En las funciones de "vuelta atrás" analizamos el contenido típicamente usando los selectores (XPath Selectors) y generamos los Items con el contenido analizado.
 
@@ -489,22 +489,22 @@ Scrapy dispone de muchos más elementos para características más avanzadas com
 ##Recursos adicionales
 Aquí tenéis un listado de recursos adicionales que os pueden ser útiles para este módulo por si queréis profundizar más en el tema:
 -Librerías
-**Beautiful Soup http://pypi.python.org/pypi/beautifulsoup4/4.0.4
-**Mechanize http://pypi.python.org/pypi/mechanize/
-**lxml http://lxml.de/
+	*Beautiful Soup http://pypi.python.org/pypi/beautifulsoup4/4.0.4
+	*Mechanize http://pypi.python.org/pypi/mechanize/
+	*lxml http://lxml.de/
 
 -Scrapy
-**Scrapy Google Groups - https://groups.google.com/forum/?hl=es&fromgroups#%21forum/scrapy-users
-**Documentación de Scrapy - http://doc.scrapy.org/en/0.14/index.html
-**Snippets - http://snippets.scrapy.org/
+	*Scrapy Google Groups - https://groups.google.com/forum/?hl=es&fromgroups#%21forum/scrapy-users
+	*Documentación de Scrapy - http://doc.scrapy.org/en/0.14/index.html
+	*Snippets - http://snippets.scrapy.org/
 
 -Wikipedia
-**Web scraping - http://en.wikipedia.org/wiki/Web_scraping
-**Screen scraping - http://es.wikipedia.org/wiki/Screen_scraping
-**Report mining - http://en.wikipedia.org/wiki/Report_mining
+	*Web scraping - http://en.wikipedia.org/wiki/Web_scraping
+	*Screen scraping - http://es.wikipedia.org/wiki/Screen_scraping
+	*Report mining - http://en.wikipedia.org/wiki/Report_mining
 
 -Otros
-**Dive Into Python’s tutorial on HTML processing - http://www.diveintopython.net/html_processing/extracting_data.html
-**XPath Expressions - http://en.wikipedia.org/wiki/XPath
-**XPath Selectors - http://doc.scrapy.org/en/latest/topics/selectors.html
-**Scrapemark - http://arshaw.com/scrapemark/
+	*Dive Into Python’s tutorial on HTML processing - http://www.diveintopython.net/html_processing/extracting_data.html
+	*XPath Expressions - http://en.wikipedia.org/wiki/XPath
+	*XPath Selectors - http://doc.scrapy.org/en/latest/topics/selectors.html
+	*Scrapemark - http://arshaw.com/scrapemark/

@@ -99,6 +99,7 @@ python 01_hola_mundo.py
 ![Hola mundo ](../img/InterfacesGtk_01_hola_mundo.png)
 
 ##Bucle principal y señales
+
 ###Señales
 Como la mayoría de herramientas para creación de interfaces de usuario, GTK+ utiliza un modelo de programación orientado a eventos. Cuando el usuario no está haciendo nada, GTK + ejecuta un bucle principal y espera la llegada de eventos. Si el usuario realiza alguna acción - por ejemplo, un clic del ratón - a continuación, el bucle principal "despierta" y envía un evento para GTK+.
 
