@@ -206,21 +206,11 @@ Y para identificar hora y minutos, en formato "21:34":
 
 "^[0-2]\d:[0-6]\d$"
 
-##Tabla de patrones y scuencias especiales de re
+##Tabla de patrones.
 
-Patrones
-  
-| Operador   | Interpretación |  
-| ---------- | ---------- |  
-| .          | Busca cualquier caracter          |  
-| ^          | Busca al principio de la cadena   |  
+Como referencia rápida tenemos:
 
-Secuencias especiales
-  
-| Secuencia  | Interpretación |  
-| ---------- | ---------- |  
-| \numero    | Busca texto o grupo de numero   |  
-| \A         | Busca solo al principio         |  
+[https://help.libreoffice.org/Common/List_of_Regular_Expressions/es](https://help.libreoffice.org/Common/List_of_Regular_Expressions/es)
 
 ##Instalando Regular Expressions Tester
 
