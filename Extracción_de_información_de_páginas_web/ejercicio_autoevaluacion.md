@@ -1,0 +1,2 @@
+##Ejercicio de Autoevaluación - Opcional
+Sube una captura de pantalla para comprobar que has podido instalar Scrapy correctamente (50/100). Si se ve el intérprete de Scrapy en acción se obtendrá el 100/100.
