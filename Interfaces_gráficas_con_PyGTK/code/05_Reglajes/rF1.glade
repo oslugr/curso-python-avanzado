@@ -11,7 +11,7 @@
     <property name="type_hint">dialog</property>
     <property name="program_name">Reglajes F1</property>
     <property name="version">1.0</property>
-    <property name="copyright" translatable="yes">Copyright 20144 Oficina de Software Libre <osl@ugr.es></property>
+    <property name="copyright" translatable="yes">Copyright 2014 Oficina de Software Libre</property>
     <property name="comments" translatable="yes">Esta aplicación obtiene la configuración óptima
  para un Fórmula 1. El cálculo de esta configuración 
 se hace mediante el método Electre.</property>
@@ -31,7 +31,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 MA 02110-1301, USA.</property>
-    <property name="authors">Oficina de Software Libre <osl@ugr.es></property>
+    <property name="authors">Oficina de Software Libre</property>
     <property name="logo">resources/about1.jpg</property>
     <property name="wrap_license">True</property>
     <property name="license_type">custom</property>
