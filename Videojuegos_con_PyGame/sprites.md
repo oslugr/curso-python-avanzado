@@ -37,7 +37,7 @@ el atributo `topleft` nos indica la esquina superior izquierda del sprite, pero 
 
 > Todo el tratamiento de posiciones, colisiones, superposiciones, etc de nuestros sprites se hace de manera muy fácil gracias a la clase Rect. Puedes ver más detalles en [la documentación oficial](http://www.pygame.org/docs/ref/rect.html) 
 
-Un detalle importante es que, cuando hacemos blit, lo hacemos tanto de la imagen del sprite como de su rectángulo.
+Un detalle importante es que, cuando hacemos blit, lo hacemos de la imagen del sprite pasándole como coordenadas su rectángulo.
 
 Pero hemos dicho que lo mejor es usar la clase sprite para crear nuestras propias clases, por lo que nuestro código, un poco mejorado, podría ser así: 
 
