@@ -41,7 +41,7 @@ def main():
 
     Fondo = pygame.image.load("fondo.jpg")
 
-    Imagen = pygame.image.load("tipo.png")
+    Imagen = pygame.image.load("monigotillo.png")
     transparente = Imagen.get_at((0, 0))
     Imagen.set_colorkey(transparente)
 
