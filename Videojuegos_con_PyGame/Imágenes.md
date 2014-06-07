@@ -2,7 +2,7 @@
 
 El principal elemento en un juego son las imágenes. Usamos imágenes para los fondos y decorados, para los objetos estáticos o dinámicos, para los personajes o elementos de juego, para el interfaz...
 
-Ppygame usa para todo ello el objeto *surface*, que consiste básicmante en un formato de imagen interno. Para crear tus imágnees puedes usar el porgrama gráfico que quieras, porque pygame permite importar los formatos de imagen más usuales. 
+Ppygame usa para todo ello el objeto `surface`, que consiste básicmante en un formato de imagen interno. Para crear tus imágnees puedes usar el porgrama gráfico que quieras, porque pygame permite importar los formatos de imagen más usuales. Concretamente, los formatos de imagen soportados por pygame son *.bmp, *.gif, *.jpg, *.lbm, *.pbm, *.pcx, *.pgm, *.png, *.ppm, *.tga, *.tif y *.xpm.
 
 Para cargar imágenes tenemos pygame.image.load(), que importa un archivo de imagen a pygame de este modo:
 
@@ -12,7 +12,10 @@ Imagen= pygame.image.load("ruta/al/archivo/de/imagen.jpg")
 
 Esto crea un objeto *surface* que podemos usar en nuestro juego.
 
-Para posicionar un gráfico en pantalla usaremos el método blit del objeto screen, pasándole como parámetros la imagen que quremos cargar y una tupla con sus coordenadas.
+Para posicionar un gráfico en pantalla de la Ventana (que es una `surface`), usaremos el método `blit` pasándole como parámetros la imagen (otra `surface`) que quremos cargar y una tupla con sus coordenadas.
+
+> Lo que hace blit, en realidad, es pegar unas imágenes en otras. En nuestro caso, sobre Ventana. De este modo, lo que estamos haciendo es crar una sola imagen para, posteriormente, dibujar todo de una sola vez.  
+> Esto acelera el redibujado de gráficos y mejora el rendimiento, además de aprovechar algunas capacidades de aceleración por hardware. [Ver más acerca de la técnica del blitting](http://es.wikipedia.org/wiki/Bit_blit)
 
 ```
 Ventana.blit(Fondo, (0, 0))
@@ -23,7 +26,7 @@ Ventana.blit(Fondo, (0, 0))
 > La primera corrodenada de la tupla es el eje X (hotizontal) y la segunda es el eje Y (vertical).
 > Respecto al eje Z (es decir, la profundidad: qué imágenes se dibujarán encima de cuáles), las imagnes se muestran en el orden en el que se ubican con blit, de modo que las últimas se mostrarán *sobre* las anteriores.
 
-Sólo posicionar las imágenes *no las muestra*. Hace falta indicarle a pygame que debe redibujarlas, para lo que tenemos la istrucción flip(), que se usa de este modo:
+Sólo posicionar las imágenes **no las muestra**. Hace falta indicarle a pygame que debe redibujarlas, para lo que tenemos la istrucción `flip()`, que se usa de este modo:
 
 ```
 pygame.display.flip()
@@ -58,7 +61,7 @@ from pygame.locals import *
 #Inciamos pygame
 pygame.init()
 
-# Creamos un objeto screen (la ventana de juego), asginándole un alto y un ancho
+# Creamos una surface (la ventana de juego), asginándole un alto y un ancho
 Ventana = pygame.display.set_mode((600, 400))
 
 # Le ponemos untítulo a la ventana

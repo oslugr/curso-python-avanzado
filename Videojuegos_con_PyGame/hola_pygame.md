@@ -12,18 +12,21 @@ import pygame
 #Inciamos pygame
 pygame.init()
 
-# Creamos un objeto screen (la ventana de juego), asginándole un alto y un ancho
+# Creamos una surface (la ventana de juego), asginándole un alto y un ancho
 Ventana = pygame.display.set_mode((600, 400))
 
 # Le ponemos untítulo a la ventana
 pygame.display.set_caption("Hola Mundo")
 ```
 
-Como se puede leer en los comentarios (y cómo deberías comprobar ejecutándolo), este código crea una ventana (un objeto *screen* de pygame) de 600X400 pixels y le asigna un título.
+Como se puede leer en los comentarios (y cómo deberías comprobar ejecutándolo), este código crea una ventana de 600X400 pixels y le asigna un título.
 
-Al ejecutarlo comprobarás que, inmediatamente después, la ejecución del programa finaliza y esta ventana se cierra.
+> El módulo `pygame.display` es el encargado de crear y controlar la ventana y la pantalla de juego que contiene (que, a efectos prácticos, es un objeto `surface` (una imagen), como veremos más adelante.
+> Nosotros hemos creado una ventana muy simple, pero puedes ver más posibilidades en la [documentación del módulo `pygame.display`](http://www.pygame.org/docs/ref/display.html)
 
-Para poder manejar nuestro programa, necesitaremos un bucle de eventos. Un buble de ventos es un bucle infinito donde, acada ciclo, comprobamos si ocurre algún envento y actuamos en consecuencia.
+Al ejecutar este ejemplo comprobarás que, inmediatamente, la ejecución del programa finaliza y esta ventana se cierra.
+
+Para poder manejar nuestro programa, necesitaremos un bucle de eventos. Un bucle de eventos es un bucle infinito donde, a cada ciclo, comprobamos si ocurre algún envento y actuamos en consecuencia. El programa permanecerá en ejecución mientras permanezca en el bucle.
 
 Veamoslo con un ejemplo algo más complejo:
 
@@ -42,7 +45,7 @@ from pygame.locals import *
 #Inciamos pygame
 pygame.init()
 
-# Creamos un objeto screen (la ventana de juego), asginándole un alto y un ancho
+# Creamos una surface (la ventana de juego), asginándole un alto y un ancho
 Ventana = pygame.display.set_mode((600, 400))
 
 # Le ponemos untítulo a la ventana

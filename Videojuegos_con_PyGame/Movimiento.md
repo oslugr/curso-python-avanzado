@@ -21,7 +21,7 @@ from pygame.locals import *
 #Inciamos pygame
 pygame.init()
 
-# Creamos un objeto screen (la ventana de juego), asginándole un alto y un ancho
+# Creamos una surface (la ventana de juego), asginándole un alto y un ancho
 Ventana = pygame.display.set_mode((600, 400))
 
 # Le ponemos untítulo a la ventana
@@ -85,7 +85,7 @@ from pygame.locals import *
 #Inciamos pygame
 pygame.init()
 
-# Creamos un objeto screen (la ventana de juego), asginándole un alto y un ancho
+# Creamos una surface (la ventana de juego), asginándole un alto y un ancho
 Ventana = pygame.display.set_mode((600, 400))
 
 # Le ponemos untítulo a la ventana
@@ -169,7 +169,7 @@ from pygame.locals import *
 #Inciamos pygame
 pygame.init()
 
-# Creamos un objeto screen (la ventana de juego), asginándole un alto y un ancho
+# Creamos una surface (la ventana de juego), asginándole un alto y un ancho
 Ventana = pygame.display.set_mode((600, 400))
 
 # Le ponemos untítulo a la ventana
