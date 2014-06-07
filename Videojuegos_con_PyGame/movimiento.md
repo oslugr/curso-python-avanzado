@@ -10,7 +10,7 @@ Esto quiere decir que, a cada cilco de nuestro bucle, debemos redibujar el fondo
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# Importamos la libería
+# Importamos la librería
 import pygame
 
 import sys
@@ -18,13 +18,13 @@ import sys
 # Importamos constantes locales de pygame
 from pygame.locals import *
 
-#Inciamos pygame
+# Iniciamos Pygame
 pygame.init()
 
-# Creamos una surface (la ventana de juego), asginándole un alto y un ancho
+# Creamos una surface (la ventana de juego), asignándole un alto y un ancho
 Ventana = pygame.display.set_mode((600, 400))
 
-# Le ponemos untítulo a la ventana
+# Le ponemos un título a la ventana
 pygame.display.set_caption("Moviendo Imágenes")
 
 # Cargamos las imágenes
@@ -74,7 +74,7 @@ Un detalle importante es que, como el evento KEYDOWN ocurre al *pulsar* una tecl
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# Importamos la libería
+# Importamos la librería
 import pygame
 
 import sys
@@ -82,13 +82,13 @@ import sys
 # Importamos constantes locales de pygame
 from pygame.locals import *
 
-#Inciamos pygame
+# Iniciamos Pygame
 pygame.init()
 
-# Creamos una surface (la ventana de juego), asginándole un alto y un ancho
+# Creamos una surface (la ventana de juego), asignándole un alto y un ancho
 Ventana = pygame.display.set_mode((600, 400))
 
-# Le ponemos untítulo a la ventana
+# Le ponemos un título a la ventana
 pygame.display.set_caption("Moviendo Imágenes")
 
 # Cargamos las imágenes
@@ -142,7 +142,7 @@ Dado que incrementamos las coordenadas en una cantidad fija a cada ciclo del buc
 
 Bueno, si el procesador donde se ejecuta es muy lento o la máquia está muy sobrecargada va a ser dificil hacer que vaya más rápido, pero sí podemos limitar la velocidad para que no exceda de cierto nivel.
 
-Para esto (y para más cosas) tenemos la clase de pygame "Clock", que se llama del siguiente modo:
+Para esto (y para más cosas) tenemos la clase de Pygame "Clock", que se llama del siguiente modo:
 
 ```
 Reloj= pygame.time.Clock() 
@@ -154,7 +154,7 @@ y nos retorna un reloj que podemos usar para muchas cosas, entre las que está e
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# Importamos la libería
+# Importamos la librería
 import pygame
 
 import sys
@@ -166,13 +166,13 @@ Reloj= pygame.time.Clock()
 # Importamos constantes locales de pygame
 from pygame.locals import *
 
-#Inciamos pygame
+# Iniciamos Pygame
 pygame.init()
 
-# Creamos una surface (la ventana de juego), asginándole un alto y un ancho
+# Creamos una surface (la ventana de juego), asignándole un alto y un ancho
 Ventana = pygame.display.set_mode((600, 400))
 
-# Le ponemos untítulo a la ventana
+# Le ponemos un título a la ventana
 pygame.display.set_caption("Moviendo Imágenes")
 
 # Cargamos las imágenes

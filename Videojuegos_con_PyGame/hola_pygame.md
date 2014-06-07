@@ -1,21 +1,21 @@
 ##¡Hola pyGame!
 
-Vamos a dar nuestros primeros pasos en la programación de videojuegos con pygame usando un clásico "Hola Mundo".
+Vamos a dar nuestros primeros pasos en la programación de videojuegos con Pygame usando un clásico "Hola Mundo".
 
 ```
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# Importamos la libería
+# Importamos la librería
 import pygame
 
-#Inciamos pygame
+# Iniciamos Pygame
 pygame.init()
 
-# Creamos una surface (la ventana de juego), asginándole un alto y un ancho
+# Creamos una surface (la ventana de juego), asignándole un alto y un ancho
 Ventana = pygame.display.set_mode((600, 400))
 
-# Le ponemos untítulo a la ventana
+# Le ponemos un título a la ventana
 pygame.display.set_caption("Hola Mundo")
 ```
 
@@ -34,7 +34,7 @@ Veamoslo con un ejemplo algo más complejo:
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# Importamos la libería
+# Importamos la librería
 import pygame
 
 import sys
@@ -42,13 +42,13 @@ import sys
 # Importamos constantes locales de pygame
 from pygame.locals import *
 
-#Inciamos pygame
+# Iniciamos Pygame
 pygame.init()
 
-# Creamos una surface (la ventana de juego), asginándole un alto y un ancho
+# Creamos una surface (la ventana de juego), asignándole un alto y un ancho
 Ventana = pygame.display.set_mode((600, 400))
 
-# Le ponemos untítulo a la ventana
+# Le ponemos un título a la ventana
 pygame.display.set_caption("Hola. Pulsa Escape para salir")
 
 # Bucle infinito para mantener el programa en ejecución
@@ -60,20 +60,20 @@ while True:
                 sys.exit()
 ```
 
-Para empezar, debes notar que estamos importando "pygame.locals" justo después de importar a la libería pygame (Bueno, también hemos importado "sys", pero esa librería no debería necesitar explicación).
+Para empezar, debes notar que estamos importando "pygame.locals" justo después de importar a la librería Pygame (Bueno, también hemos importado "sys", pero esa librería no debería necesitar explicación).
 
 Se trata de una serie de constantes que contienen los códigos para poder acceder a las teclas, eventos de ratón, etc. En nuestro ejemplo usaremos la tecla Escape.
 
-En este ejemplo usamos un bucle infinito que mantiene el programa en ejecución, por lo que nuetra ventana no se cierra.
+En este ejemplo usamos un bucle infinito que mantiene el programa en ejecución, por lo que nuestra ventana no se cierra.
 
-En cada ciclo del bucle infinito estamos usando pygame.event.get(), que nos retorna los eventos de pygame que estén ocurriendo.
+En cada ciclo del bucle infinito estamos usando pygame.event.get(), que nos retorna los eventos de Pygame que estén ocurriendo.
 
-Si el tipo de evento es una pulsación de tecla (al que accedemos con la constante de pygame "KEYDOWN") y esa tecla es Escape (K_ESCAPE), salimos del programa.
+Si el tipo de evento es una pulsación de tecla (al que accedemos con la constante de Pygame "KEYDOWN") y esa tecla es Escape (K_ESCAPE), salimos del programa.
 
 Por otro lado notarás que, si tratas de cerrarla pulsando el botón de cerrar de la propia ventana, esto no funciona.
 
-Como prácitca, puedes intentar hacer que funcione teniendo en cuenta que la constante de pygame correspondiente a pulsar ese boton es "QUIT".
+Como práctica, puedes intentar hacer que funcione teniendo en cuenta que la constante de Pygame correspondiente a pulsar ese botón es "QUIT".
 
-Como ya te estarás imaginado, prácticamente toda la interacción que hagamos con uestro juego en pygame se hará por medio de eventos.
+Como ya te estarás imaginado, prácticamente toda la interacción que hagamos con nuestro juego en Pygame se hará por medio de eventos.
 
 Puedes verlos todos en esta [lista completa de eventos de pygame](http://www.pygame.org/docs/ref/event.html)

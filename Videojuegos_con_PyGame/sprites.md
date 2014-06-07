@@ -18,7 +18,7 @@ MiMonstruo.image = ImagenMonstruosa
 # ...y un rectángulo
 MiMonstruo.rect = MiMonstruo.image.get_rect()
 
-#Posicionamos el monstruo:
+# Posicionamos el monstruo:
 MiMonstruo.rect.topleft = (100, 100)
 
 # Y hacemos blit de la imagen y del rectángulo
