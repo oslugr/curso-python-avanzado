@@ -18,13 +18,13 @@ Una vez hecho esto, para escribir un texto debemos usar el método `render()` de
 Texto = MiFuente.render("Texto a mostrar", Antialias, Color)
 ```
 
-Donde "Texto a mostrar" es eso mismo, el texto a mostrar. En Antialias indicaremos un 1 si queremos usar antialias (difuminado de bordes, consuta aquí para más detalles) o un 0 si no queremos usarlo.
+Donde "Texto a mostrar" es eso mismo, el texto a mostrar. En Antialias indicaremos un 1 si queremos usar antialias (difuminado de bordes, [consuta aquí para más detalles](http://es.wikipedia.org/wiki/Antialiasing)) o un 0 si no queremos usarlo.
 
 En Color indicaremos el color que vamos a usar. Hay varias formas de hacer esto (ver el [objeto color de pygame](http://www.pygame.org/docs/ref/color.html)) pero la forma más simple es indicar sus componestes RGB (Rojo, Verde, Azul) con una tupla.
 
 Esto creará en "Texto" una imagen (objeto surface) que usaremos como cualquier otra imagen y que tendremos que ubicar haciendo blit (pues eso, como cualquier otra imagen).
 
-Un problema de Pygame es que no nos permite renderizar textos de varias líneas (no reconoce el caracter *\n*). Debemos cortar y situar el texto nostros mismos.
+Un problema de Pygame es que no nos permite renderizar textos de varias líneas (no reconoce el caracter *\\n*). Debemos cortar y situar el texto nostros mismos.
 
 > Al proceso de convertir algún tipo de información (en este caso una cadena de texto) a una imagen se le suele llamar "renderizar" (del inglés "render").
 
