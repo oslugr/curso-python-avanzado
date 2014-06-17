@@ -34,7 +34,7 @@ Veamoslo con este ejemplo que divide la cadena que se le proporciona en varias s
 
 import re
 
-Resultados= re.split("\D", "123a45x6-78.90")
+Resultados= re.split("\\D", "123a45x6-78.90")
 
 print Resultados
 
@@ -136,7 +136,7 @@ Hace que los patrones no distingan mayúsculas de minúsculas
 
 **re.D**
 
-Hace que el comodín "." identifique TAMBIEN al carácter "\n"
+Hace que el comodín "." identifique TAMBIEN al carácter "\\n"
 
 Todos ellos tiene una versión larga y descriptiva y otra versión más corta y de significado ligeramente más hermético. En general, es recomendable la primera de ellas, por razones de claridad y legibilidad.
 

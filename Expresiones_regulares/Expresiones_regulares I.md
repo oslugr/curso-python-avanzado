@@ -54,9 +54,9 @@ El punto (.) reemplaza a un carácter cualquiera. De este modo, una búsqueda de
 
 La expresión que usamos para reemplazar o buscar cadenas se suele llamar el "patrón", y así lo haremos en adelante. De este modo, en el ejemplo anterior, "Pe.a" es el patrón que hemos usado para que coincida con todas esas cadenas.
 
-Fíjate que no es necesario que sean caracteres alfanuméricos (admite también signos de puntuación y, en general, cualquier carácter) y que, evidentemente, también coincide con el propio signo ".". El único carácter con el que no coincide con "." (e incluso esto puede configurarse de otro modo con el uso del flag re.DOTALL) es con el "retorno de carro" o "nueva línea" (el clásico "\n").
+Fíjate que no es necesario que sean caracteres alfanuméricos (admite también signos de puntuación y, en general, cualquier carácter) y que, evidentemente, también coincide con el propio signo ".". El único carácter con el que no coincide con "." (e incluso esto puede configurarse de otro modo con el uso del flag re.DOTALL) es con el "retorno de carro" o "nueva línea" (el clásico "\\n").
 
-Para poder poner en tu expresión regular un punto y que signifique sólo un punto y no otra cosa, hay que "escapar" el carácter anteponiéndole la barra "\". De este modo, la expresión "Pe\.a" sólo coincidiría con "Pe.a".
+Para poder poner en tu expresión regular un punto y que signifique sólo un punto y no otra cosa, hay que "escapar" el carácter anteponiéndole la barra "\\". De este modo, la expresión "Pe\\.a" sólo coincidiría con "Pe.a".
 
 
 ```
@@ -66,7 +66,7 @@ Para poder poner en tu expresión regular un punto y que signifique sólo un pun
 
 import re
 
-patron = "r.ar.e\."
+patron = "r.ar.e\\."
 
 cadena= "En un lugar de la mancha de cuyo nombre no quiero acordarme."
 
@@ -81,15 +81,15 @@ print "No aparece"
 ```
 
 
-¿Y si lo que buscamos es la propia cadena "Pe\.a"? ¿Qué patrón debemos usar?
+¿Y si lo que buscamos es la propia cadena "Pe\\.a"? ¿Qué patrón debemos usar?
 
-Para ello, de nuevo, debemos usar el carácter de escape "\", esta vez delante de la propia "\", para obtener algo así: "Pe\\\.a".
+Para ello, de nuevo, debemos usar el carácter de escape "\\", esta vez delante de la propia "\\", para obtener algo así: "Pe\\\\.a".
 
 Nota que hay tres barras. La primera es para escapar la segunda, y la tercera es para escapar el punto (si sólo hubiésemos puesto dos, el punto se interpretaría como un comodín, tal como hemos visto arriba).
 
 Sí, en ocasiones pueden acumularse montones de barras de escape.
 
-**Nueva línea "\n".**
+**Nueva línea "\\n".**
 
 Cuando pulsas la tecla "Enter" o "Intro" para pasar a la línea siguiente, eso es un carácter de nueva línea. Como en casi todos los lenguajes y codificaciones, se representa mediante el código "\n".
 
@@ -130,17 +130,17 @@ print "No aparece"
 
 Y, ya que estamos en ello, para que los caracteres unicode no nos den problemas en caso de que los estemos usando, es necesario usar el flag re.UNICODE.
 
-**Dígitos "\d" y "\D"**
+**Dígitos "\\d" y "\\D"**
 
-El comodín \d sustituye a cualquier dígito, y "\D" a cualquier cosa que no lo sea (letras, espacios, puntuación...).
+El comodín \\d sustituye a cualquier dígito, y "\\D" a cualquier cosa que no lo sea (letras, espacios, puntuación...).
 
-**Espacios "\s" y "\S"**
+**Espacios "\\s" y "\\S"**
 
-El comodín "\s" identifica a cualquier carácter que implique un espacio. Esto incluye al espacio propiamente dicho, al tabulador, retorno de carro... El comodín "\S" es su opuesto.
+El comodín "\\s" identifica a cualquier carácter que implique un espacio. Esto incluye al espacio propiamente dicho, al tabulador, retorno de carro... El comodín "\\S" es su opuesto.
 
-**Alfanumérico "\w" y "\W"**
+**Alfanumérico "\\w" y "\\W"**
 
-"\w" identifica caracteres alfanuméricos. Estos son las letras (mayúsculas y minúsculas), los números y el guión bajo "_". "\W" identificará los caracteres no alfanuméricos.
+"\\w" identifica caracteres alfanuméricos. Estos son las letras (mayúsculas y minúsculas), los números y el guión bajo "_". "\\W" identificará los caracteres no alfanuméricos.
 
 **Corchetes “[]”**
 
@@ -180,7 +180,7 @@ Se puede usar el signo | para separar opciones, de tal modo que "digo (hola|mund
 
 Naturalmente, todo esto se puede combinar para hacer cosas más complejas e interesantes. Por ejemplo, hagamos una expresión que reconozca números de DNI:
 
-"^\d{8}[ -]?[a-zA-Z]$"
+"^\\d{8}[ -]?[a-zA-Z]$"
 
 Con lo visto hasta ahora deberías poder justificar ese patrón. Al principio es un poco complicado de leer, pero parémonos a examinarla detenidamente. El DNI consta de un número de ocho dígitos y una letra. La letra, que puede ser mayúscula o minúscula, puede seguir al número directamente o estar separada por un espacio o un guión.Con el símbolo "^" al principio indicamos que queremos que la coincidencia coincida con el principio de la cadena, y con "$" al final hacemos que también coincida con el final. De este modo, buscamos que coincida la cadena completa, no una subcadena dentro de esta.
 
@@ -192,7 +192,7 @@ Número de teléfono: Tres grupos de tres dígitos separados (o no) por guiones:
 
 Nota que esto es lo mismo que escribir:
 
-"^\d{3}-?\d{3}-?\d{3}$"
+"^\\d{3}-?\\d{3}-?\\d{3}$"
 
 Si queremos un número de móvil (que vamos a suponer -erróneamente- que son los que empiezan por 6):
 
@@ -200,11 +200,11 @@ Si queremos un número de móvil (que vamos a suponer -erróneamente- que son lo
 
 Una primera aproximación para identificar un correo electrónico "nombre@dominio.com" sería la siguiente:
 
-"^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z0-9_\-\.]{1,3})$"
+"^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z0-9_\\-\\.]{1,3})$"
 
 Y para identificar hora y minutos, en formato "21:34":
 
-"^[0-2]\d:[0-6]\d$"
+"^[0-2]\\d:[0-6]\\d$"
 
 ##Tabla de patrones.
 
