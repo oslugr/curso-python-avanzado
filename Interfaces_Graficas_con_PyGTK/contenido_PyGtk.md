@@ -1,47 +1,14 @@
-##Introdución
-PyGTK es un conjunto de implementaciones de las librerías de la interfaz de usuario de GTK+ para el lenguaje de programación Python.
-
-Python es un lenguaje de programación interpretado, ampliable y orientado a objetos que se distribuye con un amplio conjunto de módulos que permiten el acceso a un gran número de servicios del sistema operativo, servicios de internet (como HTML, XML, FTP, etc.), gráficos (incluidos OpenGL, TK, etc.), funciones de manejo de cadenas, servicios de correo (IMAP, SMTP, POP3, etc.), multimedia (audio, JPEG) y servicios de criptografía. Existen además multitud de módulos proporcionados por terceros que añaden otros servicios.
-
-GTK (GIMP Toolkit) es una librería que permite crear interfaces gráficas de usuario. Se distribuye bajo la licencia LGPL, por lo que posibilita el desarrollo de software abierto, software libre, e incluso software comercial no libre que use GTK sin necesidad de pagar licencias o derechos.
-
-Se le conoce como el toolkit de GIMP porque originalmente se escribió para desarrollar el Programa de Manipulación de Imágenes de GNU GIMP, pero GTK se usa ya en numerosos proyectos de software, incluído el proyecto de escritorio GNOME (Entorno de Modelo de Objetos orientados a Red). GTK+ está diseñada sobre GDK (Kit de Dibujo de GIMP) que, básicamente, es una abstracción de las funciones de bajo nivel que acceden al sistema de ventanas (Xlib en el caso del sistema de ventanas X).
-
-
-GTK es fundamentalmente un interfaz orientada a objetos para programadores de aplicaciones (API). Aunque está escrita completamente en C, está implementada usando la idea de clases y funciones de retrollamada (punteros a función).
-
-En el repositorio alojado en [Github](http://github.com/oslugr/curso-python-avanzado/tree/master/Interfaces_gr%C3%A1ficas_con_PyGTK) tenéis los códigos de ejemplo de este módulo del curso.
-
-##Instalación
-
-###Requisitos
-Para la creación de un entorno de desarrollo decente en GNOME es necesario trabajar sobre una máquina con una distribución reciente. De esta manera evitaremos luchar con viejos problemas y dependencias. Para las siguientes instrucciones, se supone que se ha instalado Ubuntu 11.10 (o superior) en el equipo. Es muy aconsejable disponer de la versión 3.2 de GNOME, de esta manera también evitaremos problemas con dependencias.
-
-###Herramientas de desarrollo
-Mediante la línea de órdenes (o el Centro de Software de Ubuntu) instalaremos los paquetes necesarios para crear nuestras aplicaciones. Básicamente necesitaremos 3 herramientas:
-- Tu IDE preferido o un simple editor de texto nos será mas que suficiente. Como buenos editores puedes usar [Geany](www.geany.org/), [Atom](https://atom.io/)
-- [Glade](http://glade.gnome.org/), necesario para hacer el diseño de la interfaz. Versión recomendada 3.10
-- [DevHelp](http://live.gnome.org/devhelp), documentación.
-
-###Paquetes necesarios para Python
-Python utiliza [GobjectIntrospection](http://live.gnome.org/GObjectIntrospection), por lo tanto simplemente tenemos de asegurarnos de tener un buen entorno de desarrollo para Python. Imprescindibles los paquetes python y python-object. Desde el intérprete de órdenes se instalarán fácilmente con apt-get (desde Ubuntu y derivados o con órdenes como yum, pacman etc si usamos otra distribución).
-
-Para curarnos en salud y evitar errores por dependencias, instalaremos también el paquete gobject-introspection.
-
-En definitiva:
-```bash
-sudo apt-get install python-gobject gobject-introspection
-```
-
-La instalación de librerías y paquetes has configurar nuestro entorno de desarrollo sea lo menos divertido en cuanto a la creación de aplicaciones con PyGTK. Una vez creado nuestro ¡Hola mundo! con PyGTK, el resto será coser y cantar.
-
 ##Arrancando motores
 Tenemos dos vías principales de acceso al diseño de interfaces con PyGTK. La primera de estas vías se basa en un editor de texto, una buena documentación y muchas ganas de aprender. Comenzaremos por la vía del editor de texto.
 
 Más adelante una vez que nos hayamos familiarizado con los widgets que tenemos a nuestro alcance, utilizaremos una aplicación que nos facilitará la creación de nuestra interfaz. Repetimos, esto será mas adelante.
 
-Cómo no podía ser de otra manera, nuestro primer programa será el ¡Hola Mundo!. A continuación os mostraré el código fuente necesario para crear una ventana. Iremos comentando línea a línea para que sea más fácil de entender este ejemplo.
-```python
+De primer ejemplo para ver como funciona todo este mundo nos podemos remitir al código del ejemplo [```00_Initial_Code```](https://github.com/oslugr/curso-python-avanzado/tree/master/Interfaces_Graficas_con_PyGTK/code/00_Initial_Code)
+
+Cómo no podía ser de otra manera, nuestro primer programa mínimo será el ¡Hola Mundo!. A continuación os mostraré el código fuente necesario para crear una ventana. Iremos comentando línea a línea para que sea más fácil de entender este ejemplo.
+[```01_Hola_Mundo```](https://github.com/oslugr/curso-python-avanzado/tree/master/Interfaces_Graficas_con_PyGTK/code/01_Hola_Mundo)
+
+```
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from gi.repository import Gtk
@@ -92,11 +59,12 @@ Veamos los comentarios específicos para cada línea:
 
 
 Para probar nuestro primer programa, abrimos la terminal, nos posicionamos en el directorio que contiene el fichero y lanzamos la orden:
-```bash
+
+```
 python 01_hola_mundo.py
 ```
 
-![Hola mundo ](../img/InterfacesGtk_01_hola_mundo.png)
+![Hola mundo](../img/InterfacesGtk_01_hola_mundo.png)
 
 ##Bucle principal y señales
 
@@ -117,6 +85,8 @@ widget.disconnect(id_conexion)
 En la mayoría de las aplicaciones se debe conectar en la ventana principal el evento “delete-event”. Este evento se genera cuando se cierra la venta principal. El controlador (id) por defecto para esta señal, destruye la ventana, pero no termina la aplicación. La forma correcta de hacerlo es la siguiente:
 window.connect(“delete-event”, Gtk.main_quit)
 
+Un ejemplo algo más avanzado lo veremos un poco más adelante.
+
 ###Propiedades
 Las propiedades nos indican la configuración y el estado de los widgets. Cada widget tiene su propio conjunto de propiedades concreto. Por ejemplo, un botón tiene la propiedad “label” que contiene el texto que se mostrará dentro del botón.
 
@@ -135,15 +105,14 @@ Cada pieza de una interfaz gráfica de usuario GTK+ se compone de uno o varios "
 
 Aunque un GtkWindow es también un GtkWidget, un GtkWidget no es necesariamente un GtkWindow. Los widgets hijos heredan de sus objetos padre para extender la funcionalidad del objeto. Se trata de programación orientada a objetos.
 
-Podemos mirar en cualquier widget en la documentación de referencia de GTK + para ver qué objetos se derivan de el. En el caso de GtkWindow, se ve algo como esto:
-```
-+-- gobject.GObject
-  +-- gtk.Object
-    +-- gtk.Widget
-      +-- gtk.Container
-        +-- gtk.Bin
-          +-- gtk.Window
-```
+Podemos mirar en cualquier widget en la documentación de referencia de GTK + para ver qué objetos se derivan de el. En el caso de GtkWindow, se ve una estructura como esta:
+
+* gobject.GObject
+    - gtk.Object
+        + gtk.Widget
+            * gtk.Container
+                - gtk.Bin
+                    + gtk.Window
 
 Como puedes ver, un objeto GtkWindow hereda de un objeto GtkBin que se deriva de
 GtkContainer, y así sucesivamente. La razón de que esta jerarquía sea tan importante es
@@ -154,7 +123,10 @@ También empezamos a ver que surge una convención de nombres. Esto es bastante 
 Las funciones que manipulan estos objetos se identifican en minúsculas con guiones para espacios. Por ejemplo, gtk_window_set_title() es una función para establecer la propiedad de título de un objeto GtkWindow.
 
 Dejamos un ejemplo simple de uso del widget ProgressBar (una barra de progreso para mostrar el completado de diferentes acciones) haciendo uso de lo ya mencionado en el tema del curso.
-```python
+
+[```02_Barra_Progreso```](https://github.com/oslugr/curso-python-avanzado/tree/master/Interfaces_Graficas_con_PyGTK/code/02_Barra_Progreso)
+
+```
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
@@ -249,7 +221,8 @@ En la zona media (que está vacía cuando se inicia por primera vez Glade). Aqu�
 
 3. El Inspector.
 Muestra el diseño como un árbol que le permite acceder y ver la jerarquía de los widgets que componen el diseño. Podemos establecer las propiedades de widgets en las fichas de propiedades, incluyendo la especificación de las funciones de devolución de llamada para las señales.
-![Estructura de Glade ](../img/InterfacesGtk_02_Glade_01.png)
+
+![Estructura de Glade](../img/InterfacesGtk_02_Glade_01.png)
 
 ###Estableciendo funciones a las señales en la ventana de propiedades
 Los objetos emiten una "señal" cuando sucede algo que podría ser útil para el programador. Estas señales son similares a los "eventos" de Visual Basic. Como programador, debemos elegir las señales que deseamos capturar y llevar a cabo una tarea, además de conectar una función de devolución de llamada a esa señal.
@@ -259,14 +232,16 @@ La primera señal que vamos a aprender, y que vamos a utilizar en casi todas las
 Para capturar esta señal y salir de nuestra aplicación correctamente es necesario indicar la función que vamos a usar para atender a la señal. Se ilustra mejor cuando se escribe código para una GUI, sin embargo, por ahora, vamos a especificar la función que se va a llamar cuando la señal "destroy" se emite por nuestra GtkWindow.
 
 En la ventana de propiedades desplegamos las señales GtkWidget. Localizamos la señal “destroy” y en la columna Manipulador, escribimos el nombre de la función que se va a llamar.
-![Destroy ](../img/InterfacesGtk_02_Glade_02.png)
+
+![Destroy](../img/InterfacesGtk_02_Glade_02.png)
 
 
 ##GTK-BUILDER
 El objeto Gtk.Builder nos permite diseñar una interfaz de usuario con una simple línea de código. EL funcionamiento de esta clase es muy simple. Se hace una descripción de la interfaz en un fichero XML, en tiempo de ejecución se carga el fichero XML y se crean los objetos automáticamente.
 
 Aquí entra en juego Glade. Una vez diseñada la interfaz se creara el fichero con la descripción. El siguiente ejemplo muestra la estructura que crea Glade:
-```xml
+
+```
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires gtk+ 3.0 -->
@@ -313,7 +288,8 @@ Aquí entra en juego Glade. Una vez diseñada la interfaz se creara el fichero c
 ```
 
 Veamos que métodos de la clase nos permiten crear sobre la marcha nuestra interfaz:
-```python
+
+```
 builder = Gtk.builder()
 builder. add_from_file(“interfaz.glade”)
 builder.add_objects_from_file(“interfaz.glade”, (“ventana1”,”boton1”, “boton2”))
@@ -322,23 +298,23 @@ builder.add_objects_from_file(“interfaz.glade”, (“ventana1”,”boton1”
 Cuando ya hemos diseñado nuestra interfaz con glade y la hemos cargado con Gtk.builder es el momento de trabajar individualmente sobre cada widget/objeto.
 
 Para poder visualizar nuestra ventana necesitamos acceder al nuestro objeto “ventana1” y llamar su método show_all:
-```python
+```
 ventana = builder.get_object(“ventana1”)
 ventana.show_all()
 ```
 
 En caso de necesitarlo también disponemos de un método de Gtk.builder que nos permite recuperar una lista de todos los objetos disponibles:
-```python
+```
 builder.get_objects()
 ```
 
 Lo único que nos hace falta es conectar las señales que genera el usuario con los bloques de código correspondientes. En este caso el método es:
-```python
+```
 builder.connet_signals(handlers)
 ```
 
 La variable handlers es un diccionario, donde la clave es el identificador de la señal, y el valor es nombre de la función que será llamada cuando se reciba la señal.
-```python
+```
 handlers = { “onDeleteWindow” : Gtk.main_quit,
     “onButtonPressed”: clickado,
 }
@@ -346,8 +322,11 @@ handlers = { “onDeleteWindow” : Gtk.main_quit,
 
 Para hacer un tratamiento de señales más elegante definimos un clase Handler, cuyos métodos son llamados por las señales que genera el usuario.
 
-Puedes ver un ejemplo en el siguiente bloque de código:
-```python
+Puedes ver un ejemplo en el siguiente bloque de código
+
+[```03_Glade_Gtkbuilder```](https://github.com/oslugr/curso-python-avanzado/tree/master/Interfaces_Graficas_con_PyGTK/code/03_Glade_Gtkbuilder)
+
+```
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
@@ -394,23 +373,28 @@ Siguiendo los apartados anteriores, abriremos Glade y arrastraremos hasta el edi
 Dentro de
 
 Dentro del objeto GtkWindow vamos a añadir un objeto GtkButton, al que le vamos a asociar la función ```on_btn_clicked``` que mostrará el objeto GtkAboutDialog cuando se emita la señal “clicked”
-![Ventana principal ](../img/InterfacesGtk_03_ventanas_01.png)
+
+![Ventana principal](../img/InterfacesGtk_03_ventanas_01.png)
 
 Para cerrar la ventana que aparece al clikar sobre el botón, asignaremos una nueva función a la señal “response” que aparece en el conjunto de señales del objeto GtkAboutDialog.
-![Ventana Acerca de ](../img/InterfacesGtk_03_ventanas_02.png)
+
+![Ventana Acerca de](../img/InterfacesGtk_03_ventanas_02.png)
 
 Para que todo funcione solo nos falta escribir el bloque de código asociado a las señales. El código de este ejemplo está en:
 
-[Github - Interfaces Gráficas PyGTK - Ventanas ](http://github.com/oslugr/curso-python-avanzado/tree/master/Interfaces_gr%C3%A1ficas_con_PyGTK/code/04_Ventanas)
+[```04_Ventanas```](https://github.com/oslugr/curso-python-avanzado/tree/master/Interfaces_Graficas_con_PyGTK/code/04_Ventanas)
 
 ##Menu y señales
 Vamos a ver mediante una aplicación básica un ejemplo de como crear una barra de menú y asignarle bloques de código a las señales que generan las entradas de menú. 
-<VIDEO>
+
+[Ejemplo](https://www.youtube.com/watch?v=p3ifSnIuZLc)
 
 
 ##Botones, etiquetas y cajas de texto
 Para acabar este módulo vamos a trabajar sobre una aplicación en la que aparecen múltiples etiquetas, cajas de texto y combobox.
+
 ![Botones, etiquetas y cajas de texto ](../img/InterfacesGtk_04_BotonesLabelsCombobox_01.png)
+
 Para completar este diseño tenemos que usar nuevos objetos que nos ayudan a distribuir colocar y alinear a los widgets que tienen dentro. A estos objetos les llamamos contenedores.
 
 En esta aplicación se ha utilizado el objeto GtkBox para ubicar los widgets que componen la interfaz. La primera caja (GtkBox) tiene 3 filas, que corresponden a:
@@ -433,7 +417,8 @@ La primera funcionalidad de la aplicación consiste en recuperar de una base de 
 - Activar el botón Calcular.
 
 Puedes ver el código de esta función en:
-```python
+
+```
 def onCircuitActivate(self, menuitem):
                 
         self.circuito = menuitem.get_label()
@@ -484,11 +469,12 @@ def onCircuitActivate(self, menuitem):
 ```
 
 El diseño y el código de esta aplicación esta disponible en el siguiente repositorio. Como practica se recomienda dedicarle un tiempo a ver cada bloque de código para ver la dinámica de funcionamiento entre interfaz, objetos y señales.
-[ReglajesF1](https://github.com/oslugr/curso-python-avanzado/blob/master/Interfaces_gráficas_con_PyGTK/code/05_Reglajes)
+[Reglajes](https://github.com/oslugr/curso-python-avanzado/tree/master/Interfaces_Graficas_con_PyGTK/code/05_Reglajes)
 
 ##Notas
 Es posible que al lanzar las aplicaciones os de un error como:
-```bash
+
+```
 WARNING **: Couldn't register with accessibility bus: Did not receive a reply. Possible causes include: the remote application did not send a reply, the message bus security policy blocked the reply, the reply timeout expired, or the network connection was broken.
 ```
 

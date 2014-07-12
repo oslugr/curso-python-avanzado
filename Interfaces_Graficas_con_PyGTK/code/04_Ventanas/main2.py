@@ -26,7 +26,7 @@ class Handler:
 	def __init__(self):
 		# Iniciamos el GtkBuilder para tirar del fichero de glade
 		self.builder = Gtk.Builder()
-		self.builder.add_from_file("ventanas.glade")
+		self.builder.add_from_file("ventanas2.glade")
 		self.handlers = {
 			"onDeleteWindow": self.onDeleteWindow,
 			"on_btn_clicked": self.on_btn_clicked,
@@ -36,7 +36,12 @@ class Handler:
 		self.builder.connect_signals(self.handlers)
 		self.window = self.builder.get_object("window")
 		self.btn = self.builder.get_object("btn")
+		self.txt = self.builder.get_object("entry")
 		self.about = self.builder.get_object("aboutdialog")
+
+		dato = 1
+		self.txt.set_text(str(dato))
+
 		self.window.show_all()
 		self.window.resize(300,300)		
 
@@ -47,8 +52,7 @@ class Handler:
 	def on_btn_clicked(self, window):
 		print "Aparece querido Acerca de"
 		print "Introduce un dato"
-		dato = raw_input()
-		self.btn.set_label(dato)
+		
 		self.about.show()
 
 	def onCloseAboutDialog(self,window,data=None):

@@ -1,0 +1,775 @@
+
+<style type="text/css">
+
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px;
+  color: #333;
+}
+
+body > *:first-child {
+  margin-top: 0 !important;
+}
+
+body > *:last-child {
+  margin-bottom: 0 !important;
+}
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a.absent {
+  color: #cc0000;
+}
+
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative;
+}
+
+h2:first-child, h1:first-child, h1:first-child + h2, h3:first-child, h4:first-child, h5:first-child, h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  text-decoration: none;
+}
+
+h1 tt, h1 code {
+  font-size: inherit;
+}
+
+h2 tt, h2 code {
+  font-size: inherit;
+}
+
+h3 tt, h3 code {
+  font-size: inherit;
+}
+
+h4 tt, h4 code {
+  font-size: inherit;
+}
+
+h5 tt, h5 code {
+  font-size: inherit;
+}
+
+h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: black;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+h4 {
+  font-size: 18px;
+}
+
+h5 {
+  font-size: 16px;
+}
+
+h6 {
+  color: #777777;
+  font-size: 16px;
+}
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0;
+  font-size: 16px;
+}
+
+hr {
+  background: transparent url("http://tinyurl.com/bq5kskr") repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+body > h1:first-child + h2 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0;
+}
+
+li p.first {
+  display: inline-block;
+}
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul :first-child, ol :first-child {
+  margin-top: 0;
+}
+
+ul :last-child, ol :last-child {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 16px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt > :first-child {
+  margin-top: 0;
+}
+
+dl dt > :last-child {
+  margin-bottom: 0;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd > :first-child {
+  margin-top: 0;
+}
+
+dl dd > :last-child {
+  margin-bottom: 0;
+}
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777;
+}
+
+blockquote > :first-child {
+  margin-top: 0;
+}
+
+blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+table {
+  padding: 0;
+}
+table tr {
+  border-top: 1px solid #cccccc;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+table tr th {
+  font-weight: bold;
+  border: 1px solid #cccccc;
+  text-align: left;
+  margin: 0;
+  padding: 6px 13px;
+}
+
+table tr td {
+  border: 1px solid #cccccc;
+  text-align: left;
+  margin: 0;
+  padding: 6px 13px;
+}
+
+table tr th :first-child, table tr td :first-child {
+  margin-top: 0;
+}
+
+table tr th :last-child, table tr td :last-child {
+  margin-bottom: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+span.frame {
+  display: block;
+  overflow: hidden;
+}
+
+span.frame > span {
+  border: 1px solid #dddddd;
+  display: block;
+  float: left;
+  overflow: hidden;
+  margin: 13px 0 0;
+  padding: 7px;
+  width: auto;
+}
+
+span.frame span img {
+  display: block;
+  float: left;
+}
+
+span.frame span span {
+  clear: both;
+  color: #333333;
+  display: block;
+  padding: 5px 0 0;
+}
+
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both;
+}
+
+span.align-center > span {
+  display: block;
+  overflow: hidden;
+  margin: 13px auto 0;
+  text-align: center;
+}
+
+span.align-center span img {
+  margin: 0 auto;
+  text-align: center;
+}
+
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both;
+}
+
+span.align-right > span {
+  display: block;
+  overflow: hidden;
+  margin: 13px 0 0;
+  text-align: right;
+}
+
+span.align-right span img {
+  margin: 0;
+  text-align: right;
+}
+
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left;
+}
+
+span.float-left span {
+  margin: 13px 0 0;
+}
+
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right;
+}
+
+span.float-right > span {
+  display: block;
+  overflow: hidden;
+  margin: 13px auto 0;
+  text-align: right;
+}
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+
+p code {
+  background-color: #f8f8f8;
+  font-size: 15px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  background: transparent;
+}
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 15px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 15px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt, p code {
+  background-color: transparent;
+  border: none;
+}
+
+</style>
+
+<h2 id="introducción">Introducción</h2>
+<p>En este módulo vamos a ver qué trata esta técnica de programación, a la que se le puede sacar mucho partido y puede dar mucho juego para hacer aplicaciones. Acabando el módulo con un ejercicio simple de hacer, así que empecemos.</p>
+<h3 id="qué-es-el-scraping">¿Qué es el scraping?</h3>
+<p>Os preguntaréis ¿qué es eso del scraping? Pues el scraping (traduciendo del inglés sería como “raspar algo”) en general es una técnica para obtener información de diferentes medios, lo que podemos denominar como Data scraping.</p>
+<p>Pues bien hay varios términos que podemos diferenciar en el mundo del scraping como son:</p>
+<ul>
+<li><p>Screen scraping</p>
+<p>Es la técnica con la que podemos obtener la información de un dispositivo gráfico, como ejemplo hipotético pongámonos en aquellos años de 1950 donde se usaban pantallas informativas, unos simples terminales que mostraban información.</p>
+<p>Pues para recabar esos datos tendríamos que diseñar un sistema el cual podríamos conectar mediante algún protocolo y emular las pulsaciones para movernos por el texto mostrado obteniendo lo que nos interese y enviando esta información a un sistema moderno para procesarla.</p></li>
+<li><p>Web scraping. Es una técnica muy común (de hecho es sobre la que nos vamos a centrar en este módulo de scraping) ya que de lo que trata es obtener la información de un recurso como por ejemplo de una página web en HTML y procesar esa información.</p></li>
+<li><p>Report mining. Al igual que el web scraping y el screen scraping es otra técnica que también pretende obtener información pero en este caso a partir de un archivo (HTML, RDF, CSV, etc). Así con esta aproximación de definición podemos crear un mecanismo simple y rápido sin necesidad de escribir una API y como característica principal podemos indicar que el sistema no necesita de una conexión ya que al trabajar a partir de un fichero es posible extraer la información de forma offline y sin necesidad de utilizar ninguna API. Con esta técnica se consigue facilitar el análisis evitando el uso excesivo del equipo y tiempo de computación e incrementar la eficiencia y la rapidez para un prototipado y desarrollo de reportes personalizados (por ejemplo en una empresa, que estos reportes se realicen fuera del horario comercial).</p></li>
+<li><p>Spider. Los spiders (podríamos traducirlo por los rastreadores aunque su significado literal sea arañas) son scripts o programas que siguen unas reglas para moverse por el sitio web y recabar la información imitando la interacción que realizaría un usuario con el sitio web.</p></li>
+</ul>
+<h3 id="para-qué-me-sirve">¿Para qué me sirve?</h3>
+<p>Supongamos el ejemplo que has visto una página web que te gusta mucho y quieres obtener cierta información de la misma, por ejemplo has entrado en <code>JuanitoInformática</code> y quieres obtener de forma periódica los precios de las tarjetas gráficas de nVidia, pues con el scraping puedes conseguirlo, te cueste más o menos y tardes más tiempo o menos se puede recabar esa información tan interesante y preciada para ti para que puedas utilizarla según lo que necesites de forma independiente a la web original.</p>
+<h3 id="entonces-creo-que-puedo-empezar">Entonces creo que puedo empezar</h3>
+<p>Llegados a este punto del módulo podemos decir que el scraping es una técnica muy potente si sabes como utilizarla y si aún no estás convencido continúa con el módulo y verás que no es complicada la técnica una vez empiezas.</p>
+<h3 id="qué-necesito-saber">¿Qué necesito saber?</h3>
+<p>Pues aparte de lo descrito antes, para que tengas unas nociones básicas de este tema es necesario que sepas algo básico de páginas web y poquito más.</p>
+<h3 id="herramientas-de-refuerzo-y-útiles">Herramientas de refuerzo y útiles</h3>
+<ul>
+<li><p>Firefox como navegador Para la realización del curso es recomendable usar Firefox por varios motivos, entre ellos, que es un navegador perteneciente a la comunidad de software libre, cumple los estándares web y tiene una gran funcionalidad.</p></li>
+<li><p>Firebug. Depuración y obtención de XPath expresions. Firefox dispone de un add-on (un complemento) llamado Firebug. Con este complemento nos podemos ayudar para el desarrollo de proyectos de distintas índoles, entre ellas para hacer scraping ya que podemos obtener la expresión XPath de los enlaces o metadatos que queremos obtener.</p></li>
+</ul>
+<div class="figure">
+<img src="http://campusvirtual.ugr.es/moodle/file.php/1884/img/Scraping_XPathExpression.png" alt="XPath Expressions" /><p class="caption">XPath Expressions</p>
+</div>
+<ul>
+<li>Firefinder. Testing de XPath expresions. Es otro complemento de Firefox con el que podemos probar expresiones XPath sobre la página web y así, después, traerlas a un proyecto y usarlas.</li>
+</ul>
+<div class="figure">
+<img src="http://campusvirtual.ugr.es/moodle/file.php/1884/img/Scraping_Firefinder.png" alt="Firefinder" /><p class="caption">Firefinder</p>
+</div>
+<h3 id="dónde-y-cómo-conseguir-la-información">¿Dónde y cómo conseguir la información?</h3>
+<p>Para hacer scraping la información la podemos obtener de cualquier página web, y para conseguirla tenemos dos medios: * De forma automatizada por el sitio. Es decir, que el website provee una API (Aplication Programing Interface) para interactuar con el sitio. * Manualmente. No disponemos de la API comentada y tenemos que diseñar nosotros los mecanismos para el acceso a ella.</p>
+<h2 id="un-ejemplo-sencillo-y-básico">Un ejemplo sencillo y básico</h2>
+<p>Pues aquí os dejamos un ejemplo sencillo y básico para hacer scraping, como se dice, de andar por casa. Se trata de un módulo (lo podemos importar en la shell de python incluso) llamado pyGIFW (pyGetImagesFromWebsites) el cual se puede usar para descargar las imágenes de una página web indicada o de varias. Os lo podéis descargar aquí o clonar el repositorio con GIT.</p>
+<p>Implementa una serie de funciones junto con una pequeña interfaz para usarlas. Veamos parte del código:</p>
+<pre><code>def getImgFromUrl(urlSource, extension):
+    &quot;&quot;&quot;
+        name: getImgFromUrl
+        brief: Get images from a url template.
+        param urlSource: Url from where get the links of the images.
+        param extension: Extension to add the regular expression.
+        return: All the links that match with the regular expresion.
+    &quot;&quot;&quot;
+    # GET HTML
+    url = urllib.urlopen(urlSource)
+    html = url.read()
+
+    # REGULAR EXPRESION COMPILATION
+    expresion = r&#39;&lt;img src=&quot;([^&quot;]+).&#39; + extension + &#39;&quot;&#39;
+    regexp = re.compile(expresion, re.I | re.MULTILINE | re.DOTALL
+
+    # FIND ALL CASES OF THE REG. EXPR.
+    links = regexp.findall(html)
+
+    # CREATING A LIST WITH ALL THE LINKS THAT MATCH WITH THE REG. EXPR.
+    i=0
+    while i&lt;len(links):
+        links[i]=links[i]+&#39;.&#39;+extension
+        print links[i], &quot;\n&quot;
+        i += 1
+
+    return links</code></pre>
+<p>Como podéis ver es un ejemplo sencillo y fácil de entender aunque expliquemoslo un poco. El módulo puede recibir varios argumentos. Veamos el caso más sencillo, que es escribir en la consola:</p>
+<pre><code>python pyGIFW 0 URL</code></pre>
+<p>Con esto lo que estamos haciendo es indicarle al módulo que con la opción 0 le vamos a pasar a continuación una URL, que es de la que queremos descargar las imágenes. En sí no se descargan directamente si no que, para la URL dada, hace un scraping muy simple tomando todos los enlaces a imágenes de una extensión determinada (también podemos indicar qué tipo de extensión queremos descargar) y creando un script para su posterior descarga. El script lo ejecutaríamos como:</p>
+<pre><code>sh img_extension.sh</code></pre>
+<p>Donde 'extension' es el nombre de la extensión de la imagen.</p>
+<h2 id="frameworks-y-librerías-para-scraping">Frameworks y librerías para scraping</h2>
+<p>En los siguientes apartados trataremos distintos frameworks y librerías que se usan en Python para scraping.</p>
+<h3 id="qué-es-un-framework-objetivos">¿Qué es un framework? Objetivos</h3>
+<p>Un framework si lo traducimos literslamente es un &quot;Marco de trabajo&quot;. Aunque más bien deberíamos definirlo como el entorno o capa de abstración que existe entre el código puro y duro con respecto a lo que el usuario ve. La interacción es algo como: CODE &lt;-|Interactua con|-&gt; FRAMEWORK &lt;-|Interactua con|-&gt; USER</p>
+<p>¿Qué obtenemos con esto? Básicamente lo que conseguimos con un framework es tener un nivel más alto de abstracción para realizar nuestro trabajo. No evita el tener que realizar el código a mano, pero sí nos quita bastante trabajo. Así que ¿cuáles son los objetivos de un frawework? Son los siguientes: -Simplificar el trabajo, ganando eficiencia. -Extensibilidad de sí mismo. -Proveer una unión de herramientas como son el editor de código, compilador, librerías y APIs entre otras.</p>
+<h3 id="frameworks-para-scraping-en-python">Frameworks para scraping en Python</h3>
+<ul>
+<li>Mechanize Un gran conocido entre todos los que hay, está basado básicamente en el trabajo de Andy Lester (Creador del framework original en Perl [WWW:Mechanize]), Gisle Aas, Jeremy Hylton y Johnny Lee.</li>
+<li>Scrapy Es el framework que vamos a utilizar en este curso. Es un framework más joven que Mechanize pero sigue una filosofía mucho más cercana a la de Python. Características de este framework: *Una sintaxis muy clara y estructurada. *Gran potencial. *Rapidez y eficiencia. *Muy buena documentación y ejemplos. *Puedes incrustar extensiones propias en Scrapy para aumentar su funcionalidad. *Portable. Puede usarse tanto desde Linux como desde otros sistemas operativos.</li>
+</ul>
+<p>Algo que podríamos también denotar de Scrapy es que sigue una filosofía de estructuración en el proyecto parecida a Django (esto es debido a que los desarrolladores de Scrapy han tomado ideas de Django, como dicen de forma resumida en su FAQ: “¿Scrapy ha &quot;robado&quot; algo de Django? - A lo que responden - Probablemente, por que ya que Django es un gran proyecto ¿para qué reinventar lo que ya existe?” Los desarrolladores de Scrapy han sabido usar la filosofía DRY(Don't Repeat Yourself). Aún no soporta la versión 3.0 de Python así que es recomendable que tengáis instalada la versión 2.5, 2.6 o 2.7 de Python para trabajar con Scrapy.</p>
+<h3 id="librerías-para-scraping">Librerías para scraping</h3>
+<ul>
+<li><p>Beautiful Soup Una librería que existe desde el año 2004 que ha ayudado a muchos desarrolladores. Características de esta librería: *Métodos simples con una estructura &quot;Pythónica&quot; para navegar, buscar y modificar el árbol de análisis. *Automáticamente convierte el documento de entrada a Unicode y el documento de salida a UTF-8.</p></li>
+<li><p>lxml lxml es la caja de herramientas que une las librerías libxml2 para análisis de documentos XML y libxslt (basada en la anterior) es la libería que en sí misma es lenguaje XML para hacer transformaciones en documentos XML.Características de esta librería: *Soporte de forma estándar para XML. *Soporte para HTML. *Mantenido por expertos de XML. *Dispone de una API basada en &quot;ElementTree&quot;.</p></li>
+<li><p>XPath Selectors Es otra librería, que es la que usa Scrapy de forma predeterminada e integrada, con una sintaxis clara. Trabaja sobre documentos XML aunque también puede tratar documentos HTML lo que la hace muy versátil. Características de esta librería: *Basada en libxml2. *Dispone de una API para XML y HTML.</p></li>
+</ul>
+<h2 id="scrapy">Scrapy</h2>
+<p>Este es el framework que vamos a utilizar, comencemos con el punto 5.4.1 y continuemos.</p>
+<h3 id="requisitos">Requisitos</h3>
+<p>Se recomienda lo siguiente:</p>
+<ul>
+<li>Usar una versión de Python 2.5, 2.6 o 2.7 (ya que la versión para Python 3.0 aún no está soportada).</li>
+<li>Twisted 8.0 (si estás en windows se recomienda instalar Zope.interface y pywin32).</li>
+<li>w3lib.</li>
+<li>lxml o libxml2 (si usas libxml2 se recomienda la versión 2.6.28).</li>
+<li>simplejson, si usas una versión 2.6 o superior de Python no es necesario.</li>
+<li>pyopenssl (para conexiones https seguras y se recomienda instalarlo).</li>
+<li>El intérprete de Python: IPython.</li>
+<li>Una conexión a internet estable para cuando trabajemos.</li>
+</ul>
+<h3 id="instalación-de-scrapy-versión-0.14">Instalación de Scrapy (versión 0.14)</h3>
+<p>La instalación del framework es muy simple y la podemos hacer por dos vías: * Descompilar el tarball de la página oficial del sitio, satisfaciendo las dependencias manualmente y una posterior compilación, esta vía es para los más atrevidos. * O bien usando easy_install o pip también lo podemos instalar despreocupándonos de las dependencias, para ello ejecutaremos:</p>
+<pre><code>easy_instal install scrapy</code></pre>
+<p>O bien</p>
+<pre><code>pip install scrapy</code></pre>
+<h2 id="estructura-interna-de-scrapy">Estructura interna de Scrapy</h2>
+<p><img src="http://campusvirtual.ugr.es/moodle/file.php/1884/img/Scraping_EstructuraScrapy.png" alt="Estructura" /> Como podéis apreciar en esta imagen, tenéis la funcionalidad del framework el cual consta de: * El núcleo en sí (Scrapy Engine). * Los rastreadores denominados como Spiders. * Los objetos Items, Requests y Responses que vamos a usar. * El planificador de ejecucion de los elementos (Scheduler). * Los Item Pipeline encargados para el almacenamiento de la información. * Y por último la interfaz de Descargas que interactúa con Internet.</p>
+<h3 id="elementos-básicos">Elementos básicos</h3>
+<p>Scrapy dispone de una serie de elementos que engloba y con los que trabaja al hacer scraping, que son los siguientes puntos.</p>
+<h4 id="items">Items</h4>
+<p>El principal objetivo de Scrapy es extraer datos estructurados desde fuentes como típicamente son las páginas web. Provee la clase <code>Item()</code> la cual es para este propósito. Simplemente son contenedores usados para almacenar los datos obtenidos. Estos contenedores están provistos de una API tipo diccionario con una sintaxis para declarar los campos disponibles.</p>
+<p>Para crear un Item lo debemos hacer de esta forma:</p>
+<pre><code>#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+from scrapy.item import Item, Field
+
+class Producto(Item):
+    name = Field()
+    precio = Field()
+    stock = Field()
+    ultimo_actualizado = Field(serializer=str)</code></pre>
+<p>Para quien haya usado Django esto le puede resultar familiar, ya que los Items se asemejan mucho a los Django Models aunque son algo más sencillos. Los Item Fields son los objetos que engloban en sí la meta información. En ellos podemos almacenar lo que necesitemos con lo que no existe ninguna lista de referencia para los datos a guardar. En sí son una abstracción de los diccionarios de Python. También se puede extender la funcionalidad de los Items, de forma que para el ejemplo expuesto antes podemos crear subclases cuya dependencia es la anterior clase. Por ejemplo podríamos hacer:</p>
+<pre><code>class DiscountedProduct(Item):
+    discount_percent = Field(serializer=str)
+    discount_expiration_date = Field()</code></pre>
+<p>O incluso:</p>
+<pre><code>class SpecificProduct(Product):
+    name = Field(Product.fields[’name’], serializer=my_serializer)</code></pre>
+<p>Donde podemos ver que se puede añadir (o reemplazar) la clave de metadatos &quot;serializer&quot; manteniendo todos los metadatos existentes.</p>
+<h4 id="xpath-selectors">XPath Selectors</h4>
+<p>Los XPath Selectors o simplemente llamados Selectors son los elementos usados para acceder a los datos del documento.</p>
+<p>Estos objetos se construyen en base a expresiones XPath. Existen dos tipos: * HtmlXPathSelector: Para trabajar con documentos HTML * XmlXPathSelector: Para trabajar con documentos XML</p>
+<p>Ambos tipos comparten la misma API de selectores y se construyen con un objeto <code>response</code> como primer parámetro. Ejemplos:</p>
+<pre><code>hxs = HtmlXPathSelector(response) # Un selector de HTML</code></pre>
+<pre><code>xxs = XmlXPathSelector(response) # Un selector de XML</code></pre>
+<p>Para ver su funcionamiento mejor vamos a verlo con un ejemplo práctico. En una consola vamos a usar la terminal integrada de Scrapy y una página alojada en los servidores de Scrapy, en la parte de documentación.</p>
+<p>Así, en la terminal, escribimos: <code>scrapy shell http://doc.scrapy.org/_static/selectors-sample1.html</code></p>
+<p>Cuando ejecutemos la orden tendremos cargado en memoria algunas variables por defecto como la variable hxs. Podemos ejecutar estas órdenes:</p>
+<pre><code>hxs.select(’//title/text()’)
+    [&lt;HtmlXPathSelector (text) xpath=//title/text()&gt;]
+hxs.select(’//title/text()’).extract()
+    [u’Example website’]</code></pre>
+<p>La diferencia entre esta orden y la anterior es que si no ejecutamos el método extract() no accedemos al contenido y en cambio lo que obtenemos es el objeto en sí y de qué tipo es el contenido.</p>
+<pre><code>hxs.select(’//a[contains(@href, &quot;image&quot;)]/@href’).extract()
+[u’image1.html’,
+u’image2.html’,
+u’image3.html’,
+u’image4.html’,
+u’image5.html’]
+
+hxs.select(’//base/@href’).extract()
+hxs.select(’//a[contains(@href, &quot;image&quot;)]/img/@src’).extract()</code></pre>
+<p>Estos dos últimos los dejamos sin el resultado para que comprobéis que obtenéis al ejecutarlo. También podemos usar los selectores junto con expresiones regulares, lo cual lo hacemos mediante el método re(). Por ejemplo:</p>
+<pre><code>hxs.select(’//a[contains(@href, &quot;image&quot;)]/text()’).re(r’Name:\s*(.*)’)
+[u’My image 1’,
+u’My image 2’,
+u’My image 3’,
+u’My image 4’,
+u’My image 5’]</code></pre>
+<p>Tenemos la posiblidad de usar los selectores con expresiones absolutas o relativas, al igual que con los directorios en un sistema de ficheros por lo que debemos de prestar atención. Por ejemplo:</p>
+<pre><code>divs = hxs.select(’//div’) # Obtenemos todos los &#39;div&#39; del documento.
+
+for p in divs.select(’//p’): # Este uso es erróneo para obtener los &lt;p&gt; de cada &lt;div&gt;
+    print p.extract()
+
+for p in divs.select(’.//p’): # Con este modo extraemos todos los &lt;p&gt; de cada &lt;div&gt;
+    print p.extract()
+
+for p in divs.select(&#39;p&#39;): # Análogo al trozo de código correcto.
+    print p.extract()</code></pre>
+<h4 id="spiders">Spiders</h4>
+<p>Los spiders son clases que definen la forma de navegar por un determinado sitio o dominio y como extraer datos de esas páginas. Es decir que con los spiders definimos de forma personalizada el comportamiento para caminar y analizar las páginas de un sitio particular.</p>
+<p>El ciclo que sigue un spider es el siguiente: * Primero empezamos generando la petición inicial (Requests) para navegar por la primera URL y especificamos la función de &quot;vuelta atrás&quot; a ser llamada con la respuesta (Response) descargada de esa petición. La primera petición a hacer es obtenida llamando al método start_request() que por defecto genera la petición para la URL especifica en las direcciones de partida &quot;start_urls&quot; y la función de &quot;vuelta atrás&quot; para las peticiones.</p>
+<ul>
+<li>En la función de &quot;vuelta atrás&quot; analizamos la respuesta y se puede devolver:
+<ul>
+<li>Objetos tipo Item.</li>
+<li>Objetos tipo Request.</li>
+<li>O una unión de ambos sobre la que se puede iterar.</li>
+</ul></li>
+<li><p>Así estas peticiones serán realizadas descargándose por Scrapy y sus respuestas manipuladas por las funciones de &quot;vuelta atrás&quot;. En las funciones de &quot;vuelta atrás&quot; analizamos el contenido típicamente usando los selectores (XPath Selectors) y generamos los Items con el contenido analizado.</p></li>
+<li><p>Finalmente los Items devueltos por el spider se podrán pasar a algún Item Pipeline.</p></li>
+</ul>
+<p>Generalmente se sigue este ciclo de funcionamiento por todo tipo de spider. Existen varios tipos que vienen por defecto con una acometida específica. Vamos a explicarlos y ver algún ejemplo:</p>
+<ul>
+<li>BaseSpider. Este es el tipo más básico de spider.</li>
+</ul>
+<pre><code>#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+from scrapy.selector import HtmlXPathSelector
+from scrapy.spider import BaseSpider
+from scrapy.http import Request
+from myproject.items import MyItem
+
+class Rastreador(BaseSpider):
+    name = &#39;example.com&#39;
+    allowed_domains = [&#39;example.com&#39;]
+    start_urls = [
+    &#39;http://www.example.com/1.html&#39;,
+    &#39;http://www.example.com/2.html&#39;,
+    &#39;http://www.example.com/3.html&#39;,
+    ]
+
+    def parse(self, response):
+        hxs = HtmlXPathSelector(response)
+        for h3 in hxs.select(&#39;//h3&#39;).extract():
+            yield MyItem(title=h3)
+            for url in hxs.select(&#39;//a/@href&#39;).extract():
+                yield Request(url, callback=self.parse)</code></pre>
+<ul>
+<li>CrawlSpider. Es el más usado de todos los que hay. Aparte de los atributos inherentes a la clase BaseSpider, esta clase dispone de un nuevo atributo &quot;rules&quot; con el cual podemos indicarle al Spider el/los comportamiento/s que debe seguir (si hay 2 o más reglas que coinciden en el mismo enlace la primera es la que se sigue).</li>
+</ul>
+<pre><code>#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+from scrapy.contrib.spiders import CrawlSpider, Rule
+from scrapy.contrib.linkextractors.sgml import SgmlLinkExtractor
+from scrapy.selector import HtmlXPathSelector
+from scrapy.item import Item
+
+class MySpider(CrawlSpider):
+    name = &#39;example.com&#39;
+    allowed_domains = [&#39;example.com&#39;]
+    start_urls = [&#39;http://www.example.com&#39;]
+    rules = (
+    # Extraer enlaces que coincidan con &#39;category.php&#39; (pero que no coincidan con &#39;subsection.php&#39;) y seguir esos enlaces (si no indicamos callback significa que debe seguir por defecto)
+    Rule(SgmlLinkExtractor(allow=(&#39;category\.php&#39;, ), deny=(&#39;subsection\.php&#39;, ))),
+    # Extraer los enlaces que coincidan con &#39;item.php&#39; y analizarlos con el método parse_item de los spiders
+    Rule(SgmlLinkExtractor(allow=(&#39;item\.php&#39;, )), callback=&#39;parse_item&#39;),
+    )
+
+    def parse_item(self, response):
+        self.log(&#39;Hola!, esta es una página tipo item! %s&#39; % response.url)
+        hxs = HtmlXPathSelector(response)
+        elemento = Item()
+        elemento[&#39;id&#39;] = hxs.select(&#39;//td[@id=&quot;item_id&quot;]/text()&#39;).re(r&#39;ID: (\d+)&#39;)
+        elemento[&#39;name&#39;] = hxs.select(&#39;//td[@id=&quot;item_name&quot;]/text()&#39;).extract()
+        elemento[&#39;description&#39;] = hxs.select(&#39;//td[@id=&quot;item_description&quot;]/text()&#39;).extract()
+        return elemento</code></pre>
+<ul>
+<li>XMLFeedSpider</li>
+<li>CSVFeedSpider</li>
+<li>SitemapSpider Existen estos tres últimos también pero si estáis interesados en saber como funcionan en la documentación de Scrapy vienen bien especificados y con más ejemplos, por eso no van a ser explicados ya que no son necesarios para más adelante y una vez se dominen los Spiders anteriores estos serán más sencillos.</li>
+</ul>
+<h4 id="items-pipelines-y-formatos-de-exportación">Items pipelines y formatos de exportación</h4>
+<p>Los Items Pipelines podríamos denominarlos como los cauces o tuberías de los Items. Son elementos de Scrapy a los que la información que les llega son Items que han sido previamente obtenidos y procesados por algún Spider. Son clases en sí que tienen un simple objetivo: volver a procesar el Item que les llega pudiendo rechazarlo por algunos motivos o dejar que pase por este cauce. Usos típicos de estos cauces son: * Limpieza de datos en HTML. * Validación de datos scrapeados comprobando que los Items contienen ciertos campos. * Comprobación de Items duplicados. * Almacenamiento de los datos en una base de datos.</p>
+<p>Estos objetos son clases de Python que deben implementar el método process_item(item, spider) y deben devolver un objeto tipo Item (o una subclase de este) o bien, si no lo devuelve, debe lanzar una excepción del tipo DropItem para indicar que ese Item no seguirá siendo procesado. Un ejemplo de este componente es:</p>
+<pre><code>#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+from scrapy.exceptions import DropItem
+
+class PrecioPipeline(object):
+    impuesto = 18.0
+    def process_item(self, item, spider):
+        if item[&#39;precio&#39;]:
+            if item[&#39;precio_sin_tasa&#39;]:
+                item[&#39;precio&#39;] = item[&#39;precio&#39;] * self.impuesto
+                return item
+            else:
+                raise DropItem(&quot;No tiene tasa alguna el elemento: %s&quot; % item)</code></pre>
+<p>Un punto más a tener en cuenta. Cuando creamos un objeto de este tipo debemos introducir en el fichero settings.py del proyecto una línea como la siguiente para activar la tubería:</p>
+<pre><code>ITEM_PIPELINES = [
+&#39;miproyecto.pipeline.nombreTuberia&#39;,
+]</code></pre>
+<p>Donde 'miproyecto' es el nombre del proyecto en sí y 'nombreTuberia' es el nombre que le hemos dado a la clase que implementa la tubería de paso de información.</p>
+<p>Y para la escritura de los items:</p>
+<pre><code>import json
+
+class FicheroJsonPipeline(object):
+    def __init__(self):
+        self.file = open(&#39;items.jl&#39;, &#39;wb&#39;) # Abrimos un fichero en modo de escritura
+
+    def process_item(self, item, spider):
+        linea = json.dumps(dict(item)) + &#39;\n&#39;
+        self.file.write(linea)
+        return item</code></pre>
+<p>Al final para salvar los datos obtenidos debemos hacerlo mediante lo que se llaman Feed Exports, que no es más que los formatos de serialización y los backends para guardar los datos. Como formatos de serialización tenemos:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Formato</th>
+<th align="left">Usa el exportador</th>
+<th align="left">Salida en</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">JSON</td>
+<td align="left">JsonItemExporter</td>
+<td align="left">.json</td>
+</tr>
+<tr class="even">
+<td align="left">JSON Lines</td>
+<td align="left">JsonLinesItemExporter</td>
+<td align="left">.jsonlines</td>
+</tr>
+<tr class="odd">
+<td align="left">CSV</td>
+<td align="left">CsvItemExporter</td>
+<td align="left">.csv</td>
+</tr>
+<tr class="even">
+<td align="left">XML</td>
+<td align="left">XMLItemExporter</td>
+<td align="left">.xml</td>
+</tr>
+<tr class="odd">
+<td align="left">Pickle</td>
+<td align="left">PickleItemExporter</td>
+<td align="left">pickle</td>
+</tr>
+<tr class="even">
+<td align="left">Marshal</td>
+<td align="left">MarshalItemExporter</td>
+<td align="left">marshal</td>
+</tr>
+</tbody>
+</table>
+<p>Cuando usamos un formato de exportación, debemos indicar en el fichero settings del proyecto mediante la variable FEED_URI dónde vamos a realizar el almacenamiento, es decir el backend que vamos a usar. Podemos elegir entre varios: * Sistema de ficheros local. * FTP. * S3 (requiere que tengamos instalado <code>boto</code>, una interfaz de Python para Amazon Web Services). * Salida estándar por pantalla.</p>
+<h3 id="ciclo-de-trabajo">Ciclo de trabajo</h3>
+<p>Veamos ahora cual es el ciclo de trabajo con Scrapy.</p>
+<h4 id="creación-de-un-proyecto">Creación de un proyecto</h4>
+<p>Bien, ya que hemos explicado los elementos más básicos y necesarios de Scrapy, ahora vamos a empezar con la creación de un proyecto. Para ello es tan sencillo como dirigirnos en una terminal a un directorio de trabajo que queramos y escribir:</p>
+<pre><code>scrapy startproject NombreDelProyecto</code></pre>
+<p>Esto nos creará un árbol de directorios predefinido como el siguiente por ejemplo:</p>
+<p>ejemplo1 ejemplo1 <strong>init</strong>.py items.py # Fichero donde definir los Items del proyecto pipelines.py # Fichero donde definir los Items Pipelines del proyecto settings.py # Fichero de ajustes del proyecto spiders # Directorio donde almacenar los ficheros que definen los Spiders <strong>init</strong>.py scrapy.cfg # Fichero de configuración del proyecto</p>
+<h4 id="definición-de-los-items-los-spiders-y-los-items-pipelines-a-extraer.">Definición de los Items, los Spiders y los Items Pipelines a extraer.</h4>
+<p>Como ya hemos visto antes, ya debemos saber definir los items, los spiders y los cauces de items para guardar la información o rechazarla. Ahora es el momento de definir todo lo que necesitemos al respecto.</p>
+<h4 id="ejecución-del-proyecto">Ejecución del proyecto</h4>
+<p>Para poner en marcha el proyecto en el primer nivel del árbol de directorios del proyecto debemos escribir:</p>
+<pre><code>scrapy crawl NombreDelProyecto -o items.json -t json</code></pre>
+<p>Donde los últimos parámetros indican que los datos extraídos se almacenen en un fichero llamado 'items.json' y que use el exportador para formato JSON.</p>
+<h3 id="elementos-avanzados">Elementos avanzados</h3>
+<p>Scrapy dispone de muchos más elementos para características más avanzadas como son los Servicios Web que implementa por defecto, manejo de señales en el proyecto (tanto internas a Scrapy como externas definidas por el usuario), manejo también de excepciones, uso de memoria y depuración de fallos de memoria, configuración de proxys y Spiders, extractores de imágenes y enlaces.</p>
+<h2 id="recursos-adicionales">Recursos adicionales</h2>
+<p>Aquí tenéis un listado de recursos adicionales que os pueden ser útiles para este módulo por si queréis profundizar más en el tema:</p>
+<ol style="list-style-type: decimal">
+<li>Librerías
+<ul>
+<li><a href="http://pypi.python.org/pypi/beautifulsoup4/4.0.4">Beautiful Soup</a></li>
+<li><a href="http://pypi.python.org/pypi/mechanize/">Mechanize</a></li>
+<li><a href="http://lxml.de/">lxml</a></li>
+</ul></li>
+<li>Scrapy
+<ul>
+<li><a href="https://groups.google.com/forum/?hl=es&amp;fromgroups#%21forum/scrapy-users">Scrapy Google Groups</a></li>
+<li><a href="http://doc.scrapy.org/en/0.14/index.html">Documentación de Scrapy</a></li>
+<li><a href="http://snippets.scrapy.org/">Snippets</a></li>
+</ul></li>
+<li>Wikipedia
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Web_scraping">Web scraping</a></li>
+<li><a href="http://es.wikipedia.org/wiki/Screen_scraping">Screen scraping</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Report_mining">Report mining</a></li>
+</ul></li>
+<li>Otros
+<ul>
+<li><a href="http://www.diveintopython.net/html_processing/extracting_data.html">Dive Into Python’s tutorial on HTML processing</a></li>
+<li><a href="http://en.wikipedia.org/wiki/XPath">XPath Expressions</a></li>
+<li><a href="http://doc.scrapy.org/en/latest/topics/selectors.html">XPath Selectors</a></li>
+<li><a href="http://arshaw.com/scrapemark/">Scrapemark</a></li>
+</ul></li>
+</ol>

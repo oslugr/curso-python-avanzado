@@ -18,6 +18,7 @@
 #  
 
 from gi.repository import Gtk
+#import Gtk
 
 win = Gtk.Window()
 win.connect("delete-event", Gtk.main_quit)
