@@ -22,21 +22,17 @@ Vamos a verlo con un ejemplo un poco más práctico:
 
 ```
 #!/usr/python
-
 # -*- coding: utf-8 -*-
 
 import MySQLdb
 
 # Establecemos la conexión
-
 Conexion = MySQLdb.connect(host='localhost', user='conan',passwd='crom', db='DBdeConan')
 
 # Creamos el cursor
-
 micursor = Conexion.cursor()
 
 # Insertamos algunos registros (de forma cutre e ineficiente) para tener con qué trabajar
-
 query= "INSERT INTO Victimas (id,Nombre,Profesion,Muerte) VALUES (1, \"Ejercito de Zombies\",\"Muertos Vivientes\",\"Desmembramiento a espada\");"
 
 micursor.execute(query)
@@ -58,40 +54,34 @@ query= "INSERT INTO Victimas (id,Nombre,Profesion,Muerte) VALUES (5, \"Scerdote 
 micursor.execute(query)
 
 # Hacemos un commit, por si las moscas
-
 Conexion.commit()
 
 # Ahora vamos a hacer un SELECT
-
 query= "SELECT * FROM Victimas WHERE 1;"
 
 micursor.execute(query)
 
 # Obtenemos el resultado con fetchmany
-
 registros= micursor.fetchmany(2)
 
-# para cada lista retornada (de 2 registros)
-
+# para cada lista retornada (de 2 registros)...
 while (registros):
 
-# recorremos la lista...
+    # ...recorremos la lista...
 
-for registro in registros:
+    for registro in registros:
 
-# ... mprimimos el registro...
+        # ... mprimimos el registro...
 
-print registro
+        print registro
 
-# ...y recargamos los registros dentro del bucle, si quedan
+        # ...y recargamos los registros dentro del bucle, si quedan
 
-registros= micursor.fetchmany(2)
+    registros= micursor.fetchmany(2)
 
 # Esto que sigue es para borrar el contenido de la base de datos,
 # y que no se nos acumule al ir haciendo pruebas
-
 query= "DELETE FROM Victimas WHERE 1;"
-
 micursor.execute(query)
 ```
 
