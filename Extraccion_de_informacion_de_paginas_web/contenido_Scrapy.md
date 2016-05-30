@@ -101,14 +101,12 @@ scrapy shell 'http://scrapy.org' --nolog
 ```
 ![](/img/ScrapyShell.png)
 
-Cuando ejecutemos la orden tendremos cargado en memoria algunas variables por defecto como la variable hxs. Podemos ejecutar estas órdenes:
+Ahora podemos jugar con los objetos:
 
 ```
-hxs.select(’//title/text()’)
-	[<HtmlXPathSelector (text) xpath=//title/text()>]
-hxs.select(’//title/text()’).extract()
-	[u’Example website’]
+response.xpath('//title/text()').extract_first()
 ```
+![](/img/ScrapyShell1.png)
 
 La diferencia entre esta orden y la anterior es que si no ejecutamos el método extract() no accedemos al contenido y en cambio lo que obtenemos es el objeto en sí y de qué tipo es el contenido.
 
