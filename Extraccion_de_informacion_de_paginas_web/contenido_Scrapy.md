@@ -19,13 +19,13 @@ La instalación del framework es muy simple y la podemos hacer por dos vías:
 * O bien usando easy_install o pip también lo podemos instalar despreocupándonos de las dependencias, para ello ejecutaremos:
  
 ```
-easy_instal install scrapy
+easy_install Scrapy
 ```
 
 O bien
 
 ```
-pip install scrapy
+sudo pip install Scrapy
 ```
 
 
@@ -97,8 +97,9 @@ Para ver su funcionamiento mejor vamos a verlo con un ejemplo práctico. En una 
 
 Así, en la terminal, escribimos:
 ```
-scrapy shell http://doc.scrapy.org/_static/selectors-sample1.html
+scrapy shell 'http://scrapy.org' --nolog
 ```
+![](/img/ScrapyShell.png)
 
 Cuando ejecutemos la orden tendremos cargado en memoria algunas variables por defecto como la variable hxs. Podemos ejecutar estas órdenes:
 
