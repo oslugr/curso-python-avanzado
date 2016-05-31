@@ -99,7 +99,7 @@ Así, en la terminal, escribimos:
 ```
 scrapy shell http://doc.scrapy.org/en/latest/_static/selectors-sample1.html
 ```
-![](../img/ScrapyShell2.png)
+![](/img/ScrapyShell2.png)
 
 Cuando ejecutemos la orden tendremos cargado en memoria algunas variables por defecto como la variable hxs. Podemos ejecutar estas órdenes:
 
@@ -107,13 +107,17 @@ Cuando ejecutemos la orden tendremos cargado en memoria algunas variables por de
 response.xpath('//title/text()')
 ```
 **Resultado:**
+```
 [<Selector xpath='//title/text()' data=u'Example website'>]
+```
 
 ```
 response.hxs(’//title/text()’).extract()
 ```
 **Resultado:**  
+```
 [u’Example website’]
+```
 
 La diferencia entre esta orden y la anterior es que si no ejecutamos el método extract() no accedemos al contenido y en cambio lo que obtenemos es el objeto en sí y de qué tipo es el contenido.
 
