@@ -107,13 +107,13 @@ Cuando ejecutemos la orden tendremos cargado en memoria algunas variables por de
 response.xpath('//title/text()')
 ```
 **Resultado:**
-    [<Selector xpath='//title/text()' data=u'Example website'>]
+[<Selector xpath='//title/text()' data=u'Example website'>]
 
 ```
 response.hxs(’//title/text()’).extract()
 ```
 **Resultado:**  
-    [u’Example website’]
+[u’Example website’]
 
 La diferencia entre esta orden y la anterior es que si no ejecutamos el método extract() no accedemos al contenido y en cambio lo que obtenemos es el objeto en sí y de qué tipo es el contenido.
 
@@ -127,6 +127,7 @@ u'image2_thumb.jpg',
 u'image3_thumb.jpg', 
 u'image4_thumb.jpg', 
 u'image5_thumb.jpg']
+
 
 ```
 response.xpath('//base/@href').extract()
