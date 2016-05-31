@@ -111,6 +111,7 @@ response.xpath('//title/text()')
 [<Selector xpath='//title/text()' data=u'Example website'>]
 ```
 
+
 ```
 response.hxs(’//title/text()’).extract()
 ```
@@ -125,13 +126,12 @@ La diferencia entre esta orden y la anterior es que si no ejecutamos el método 
 response.css('img').xpath('@src').extract()
 ```
 **Resultado:**
-
-[u'image1_thumb.jpg', 
+```[u'image1_thumb.jpg', 
 u'image2_thumb.jpg', 
 u'image3_thumb.jpg', 
 u'image4_thumb.jpg', 
 u'image5_thumb.jpg']
-
+```
 
 ```
 response.xpath('//base/@href').extract()
@@ -148,13 +148,12 @@ Estos dos últimos los dejamos sin el resultado para que comprobéis que obtené
 response.xpath('//a[contains(@href, "image")]/text()').re(r'Name:\s*(.*)')
 ```
 **Resultado:**
-
-[u’My image 1’,
+```[u’My image 1’,
 u’My image 2’,
 u’My image 3’,
 u’My image 4’,
 u’My image 5’]
-
+```
 Tenemos la posiblidad de usar los selectores con expresiones absolutas o relativas, al igual que con los directorios en un sistema de ficheros por lo que debemos de prestar atención. Por ejemplo:
 
 ```
