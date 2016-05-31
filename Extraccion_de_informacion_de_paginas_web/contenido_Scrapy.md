@@ -126,7 +126,8 @@ La diferencia entre esta orden y la anterior es que si no ejecutamos el método 
 response.css('img').xpath('@src').extract()
 ```
 **Resultado:**
-```[u'image1_thumb.jpg', 
+```
+[u'image1_thumb.jpg', 
 u'image2_thumb.jpg', 
 u'image3_thumb.jpg', 
 u'image4_thumb.jpg', 
@@ -148,7 +149,8 @@ Estos dos últimos los dejamos sin el resultado para que comprobéis que obtené
 response.xpath('//a[contains(@href, "image")]/text()').re(r'Name:\s*(.*)')
 ```
 **Resultado:**
-```[u’My image 1’,
+```
+[u’My image 1’,
 u’My image 2’,
 u’My image 3’,
 u’My image 4’,
