@@ -76,8 +76,8 @@ class SpecificProduct(Product):
 ```
 Donde podemos ver que se puede añadir (o reemplazar) la clave de metadatos "serializer" manteniendo todos los metadatos existentes.
 
-####XPath Selectors
-Los XPath Selectors o simplemente llamados Selectors son los elementos usados para acceder a los datos del documento.
+###XPath Selectors
+Los XPath Selectors o simplemente llamados *Selectors* son los elementos usados para acceder a los datos del documento.
 
 Estos objetos se construyen en base a expresiones XPath. Existen dos tipos:
 * HtmlXPathSelector: Para trabajar con documentos HTML
@@ -99,20 +99,20 @@ Así, en la terminal, escribimos:
 ```
 scrapy shell http://doc.scrapy.org/en/latest/_static/selectors-sample1.html
 ```
-![](/img/ScrapyShell2.png)
+![](../img/ScrapyShell2.png)
 
-Ahora podemos jugar con los objetos:
+Cuando ejecutemos la orden tendremos cargado en memoria algunas variables por defecto como la variable hxs. Podemos ejecutar estas órdenes:
 
 ```
 response.xpath('//title/text()')
 ```
-*Resultado:*
-![](/img/ScrapyShell1.png)
+**Resultado:**
+    [<Selector xpath='//title/text()' data=u'Example website'>]
 
 ```
 response.hxs(’//title/text()’).extract()
 ```
-*Resultado:*   
+**Resultado:**  
     [u’Example website’]
 
 La diferencia entre esta orden y la anterior es que si no ejecutamos el método extract() no accedemos al contenido y en cambio lo que obtenemos es el objeto en sí y de qué tipo es el contenido.
@@ -120,7 +120,8 @@ La diferencia entre esta orden y la anterior es que si no ejecutamos el método 
 ```
 response.css('img').xpath('@src').extract()
 ```
-*Resultado:*
+**Resultado:**
+
 [u'image1_thumb.jpg', 
 u'image2_thumb.jpg', 
 u'image3_thumb.jpg', 
@@ -130,6 +131,7 @@ u'image5_thumb.jpg']
 ```
 response.xpath('//base/@href').extract()
 ```
+y
 
 ```
 response.xpath('//a[contains(@href, "image")]/@href').extract()
@@ -140,7 +142,7 @@ Estos dos últimos los dejamos sin el resultado para que comprobéis que obtené
 ```
 response.xpath('//a[contains(@href, "image")]/text()').re(r'Name:\s*(.*)')
 ```
-*Resultado:*
+**Resultado:**
 
 [u’My image 1’,
 u’My image 2’,
