@@ -19,13 +19,13 @@ La instalación del framework es muy simple y la podemos hacer por dos vías:
 * O bien usando easy_install o pip también lo podemos instalar despreocupándonos de las dependencias, para ello ejecutaremos:
  
 ```
-easy_instal install scrapy
+easy_install Scrapy
 ```
 
 O bien
 
 ```
-pip install scrapy
+sudo pip install Scrapy
 ```
 
 
@@ -76,8 +76,8 @@ class SpecificProduct(Product):
 ```
 Donde podemos ver que se puede añadir (o reemplazar) la clave de metadatos "serializer" manteniendo todos los metadatos existentes.
 
-####XPath Selectors
-Los XPath Selectors o simplemente llamados Selectors son los elementos usados para acceder a los datos del documento.
+###XPath Selectors
+Los XPath Selectors o simplemente llamados *Selectors* son los elementos usados para acceder a los datos del documento.
 
 Estos objetos se construyen en base a expresiones XPath. Existen dos tipos:
 * HtmlXPathSelector: Para trabajar con documentos HTML
@@ -97,43 +97,65 @@ Para ver su funcionamiento mejor vamos a verlo con un ejemplo práctico. En una 
 
 Así, en la terminal, escribimos:
 ```
-scrapy shell http://doc.scrapy.org/_static/selectors-sample1.html
+scrapy shell http://doc.scrapy.org/en/latest/_static/selectors-sample1.html
 ```
+![](/img/ScrapyShell2.png)
 
 Cuando ejecutemos la orden tendremos cargado en memoria algunas variables por defecto como la variable hxs. Podemos ejecutar estas órdenes:
 
 ```
-hxs.select(’//title/text()’)
-	[<HtmlXPathSelector (text) xpath=//title/text()>]
-hxs.select(’//title/text()’).extract()
-	[u’Example website’]
+response.xpath('//title/text()')
+```
+**Resultado:**
+```
+[<Selector xpath='//title/text()' data=u'Example website'>]
+```
+
+
+```
+response.hxs(’//title/text()’).extract()
+```
+**Resultado:**  
+```
+[u’Example website’]
 ```
 
 La diferencia entre esta orden y la anterior es que si no ejecutamos el método extract() no accedemos al contenido y en cambio lo que obtenemos es el objeto en sí y de qué tipo es el contenido.
 
 ```
-hxs.select(’//a[contains(@href, "image")]/@href’).extract()
-[u’image1.html’,
-u’image2.html’,
-u’image3.html’,
-u’image4.html’,
-u’image5.html’]
+response.css('img').xpath('@src').extract()
+```
+**Resultado:**
+```
+[u'image1_thumb.jpg', 
+u'image2_thumb.jpg', 
+u'image3_thumb.jpg', 
+u'image4_thumb.jpg', 
+u'image5_thumb.jpg']
+```
 
-hxs.select(’//base/@href’).extract()
-hxs.select(’//a[contains(@href, "image")]/img/@src’).extract()
+```
+response.xpath('//base/@href').extract()
+```
+y
+
+```
+response.xpath('//a[contains(@href, "image")]/@href').extract()
 ```
 
 Estos dos últimos los dejamos sin el resultado para que comprobéis que obtenéis al ejecutarlo. También podemos usar los selectores junto con expresiones regulares, lo cual lo hacemos mediante el método re(). Por ejemplo:
 
 ```
-hxs.select(’//a[contains(@href, "image")]/text()’).re(r’Name:\s*(.*)’)
+response.xpath('//a[contains(@href, "image")]/text()').re(r'Name:\s*(.*)')
+```
+**Resultado:**
+```
 [u’My image 1’,
 u’My image 2’,
 u’My image 3’,
 u’My image 4’,
 u’My image 5’]
 ```
-
 Tenemos la posiblidad de usar los selectores con expresiones absolutas o relativas, al igual que con los directorios en un sistema de ficheros por lo que debemos de prestar atención. Por ejemplo:
 
 ```
