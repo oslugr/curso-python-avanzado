@@ -97,41 +97,56 @@ Para ver su funcionamiento mejor vamos a verlo con un ejemplo práctico. En una 
 
 Así, en la terminal, escribimos:
 ```
-scrapy shell 'http://scrapy.org' --nolog
+scrapy shell http://doc.scrapy.org/en/latest/_static/selectors-sample1.html
 ```
-![](/img/ScrapyShell.png)
+![](/img/ScrapyShell2.png)
 
 Ahora podemos jugar con los objetos:
 
 ```
-response.xpath('//title/text()').extract_first()
+response.xpath('//title/text()')
 ```
+*Resultado:*
 ![](/img/ScrapyShell1.png)
+
+```
+response.hxs(’//title/text()’).extract()
+```
+*Resultado:*   
+    [u’Example website’]
 
 La diferencia entre esta orden y la anterior es que si no ejecutamos el método extract() no accedemos al contenido y en cambio lo que obtenemos es el objeto en sí y de qué tipo es el contenido.
 
 ```
-hxs.select(’//a[contains(@href, "image")]/@href’).extract()
-[u’image1.html’,
-u’image2.html’,
-u’image3.html’,
-u’image4.html’,
-u’image5.html’]
+response.css('img').xpath('@src').extract()
+```
+*Resultado:*
+[u'image1_thumb.jpg', 
+u'image2_thumb.jpg', 
+u'image3_thumb.jpg', 
+u'image4_thumb.jpg', 
+u'image5_thumb.jpg']
 
-hxs.select(’//base/@href’).extract()
-hxs.select(’//a[contains(@href, "image")]/img/@src’).extract()
+```
+response.xpath('//base/@href').extract()
+```
+
+```
+response.xpath('//a[contains(@href, "image")]/@href').extract()
 ```
 
 Estos dos últimos los dejamos sin el resultado para que comprobéis que obtenéis al ejecutarlo. También podemos usar los selectores junto con expresiones regulares, lo cual lo hacemos mediante el método re(). Por ejemplo:
 
 ```
-hxs.select(’//a[contains(@href, "image")]/text()’).re(r’Name:\s*(.*)’)
+response.xpath('//a[contains(@href, "image")]/text()').re(r'Name:\s*(.*)')
+```
+*Resultado:*
+
 [u’My image 1’,
 u’My image 2’,
 u’My image 3’,
 u’My image 4’,
 u’My image 5’]
-```
 
 Tenemos la posiblidad de usar los selectores con expresiones absolutas o relativas, al igual que con los directorios en un sistema de ficheros por lo que debemos de prestar atención. Por ejemplo:
 
